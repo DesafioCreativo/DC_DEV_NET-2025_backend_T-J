@@ -1,0 +1,113 @@
+﻿<html>
+<head>
+    <style>
+        body {
+            width: 100%;
+            margin: 0;
+        }
+
+        * {
+            font-family: Bahnschrift, sans-serif;
+        }
+
+        a {
+            display: grid;
+            word-break: break-all;
+        }
+
+        img {
+            width: 100%
+        }
+
+        .worm {
+            margin-bottom: 30px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 600px;
+            margin: auto;
+            background-image: url("{{public_url}}/emailStatic/bg.png");
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+        }
+
+        .title {
+            width: 100%;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 60px;
+            color: #4D4D4D;
+        }
+
+        .line {
+            width: 75%;
+            margin: auto;
+            text-align: center;
+            color: #4D4D4D;
+            font-size: 18px;
+        }
+
+        .date {
+            font-style: italic;
+        }
+
+        .btn-wrapper {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .btn {
+            background: #66CC66;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .mask {
+            position: relative;
+            background-image: url("{{public_url}}/emailStatic/middle.png");
+            background-size: 100% auto;
+            background-repeat: repeat-y;
+            padding: 30px 10% 1px 10%;
+        }
+        .mask .line {
+            color: white;
+        }
+        .mask a {
+            color: #0070bb;
+        }
+
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px;
+            font-size: 18px;
+            background: #CCCCCC;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: -60px;
+        }
+
+        .legal-text {
+            font-size: 15px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="worm" src="{{public_url}}/emailStatic/top.png" />
+        {{html}}
+        <div class="footer"><span>Copyright {{footer_current_year}} - Think&Job.com</span></div>
+        <div class="legal-text">
+            ROYAL HECROVA, S.L., Responsable del tratamiento de sus datos de carácter personal, le informa conforme a lo previsto en el RGPD de 27 de abril de 2016, que recaba y trata sus datos de carácter personal, aplicando las medidas técnicas y organizativas que establece el presente Reglamento con la finalidad de gestionar la relación que le vincula con el Responsable, así como poder remitirle cualquier tipo de comunicación a través de los medios designados al efecto. Usted da, como titular de sus datos, su consentimiento y autorización para dicho tratamiento. Podrá ejercitar los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición dirigiéndose al Responsable con dirección C/  BAZA, 9, H, 18220, ALBOLOTE, GRANADA.
+        </div>
+    </div>
+</body>
+</html>

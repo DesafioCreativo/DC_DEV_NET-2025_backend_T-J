@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkAndJobSolution", "ThinkAndJobSolution\ThinkAndJobSolution.csproj", "{A7433329-8669-46BD-A0F6-B08D49E6111C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7433329-8669-46BD-A0F6-B08D49E6111C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7433329-8669-46BD-A0F6-B08D49E6111C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7433329-8669-46BD-A0F6-B08D49E6111C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7433329-8669-46BD-A0F6-B08D49E6111C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7FA5D16-F479-4156-8031-E3F07B142770}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/heinrrichfachosharebusiness
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ThinkAndJobSolution\\ThinkAndJobSolution.csproj
+		SccProjectName1 = ThinkAndJobSolution
+		SccLocalPath1 = ThinkAndJobSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="ohsnap"></div>
+<div id="list">
+    <h1>Notificaciones</h1>
+    <input type="number" id="idusuario" min="1" max="100" value="3" />
+</div>
+
+
+@* <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/lib/ohsnap/ohsnap.js"></script>
+<script src="~/lib/jquery2/2.1.4/jquery.js"></script> *@
+<script src="@Url.Content("~/lib/microsoft/signalr/dist/browser/signalr.js")"></script>
+<script src="@Url.Content("~/lib/ohsnap/ohsnap.js")"></script>
+<script src="@Url.Content("~/lib/jquery2/2.1.4/jquery.js")"></script>
+
+
+<style>
+    /* Oh Snap */
+
+    #ohsnap {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+        margin-left: 5px;
+        z-index: 99;
+    }
+
+    .alert {
+        text-align: right;
+        margin-top: 10px;
+        padding: 15px;
+        border: 1px solid #eed3d7;
+        border-radius: 4px;
+        float: right;
+        clear: right;
+        background-color: white;
+    }
+
+    .alert-red {
+        color: white;
+        background-color: #DA4453;
+    }
+
+    .alert-green {
+        color: white;
+        background-color: #37BC9B;
+    }
+
+    .alert-blue {
+        color: white;
+        background-color: #4A89DC;
+    }
+
+    .alert-yellow {
+        color: white;
+        background-color: #F6BB42;
+    }
+
+    .alert-orange {
+        color: white;
+        background-color: #E9573F;
+    }
+
+    .buttons {
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .buttons a {
+        margin: auto;
+        margin-bottom: 10px;
+        float: none !important;
+        text-align: center;
+    }
+
+    .buttons a span {
+        padding-left: 0px;
+    }
+
+    #ohsnap {
+        text-shadow: none;
+    }
+</style>
+
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("hubmodulo")
+        .build();
+
+    connection.start().then(() => console.log("conectado"))
+        .catch((err) => console.error(err));
+
+    connection.on("Recibe", (Recibe) => {
+        console.log("Recibe...");
+        const nItems = Recibe.length;
+        console.log(Recibe);
+        //ohSnap($("#idusuario").val(), { color: 'red', 'duration': '12000' });
+        for (let i = 0; i < nItems; i++) {
+            //ohSnap(JSON.stringify(Recibe[i]), { color: 'red', 'duration': '12000' });
+            //ohSnap(Recibe[i].ususen, { color: 'red', 'duration': '12000' });
+            if ($("#idusuario").val() == Recibe[i].ususen) {
+            /*setTimeout(ohSnap(Recibe[i].mensaje + ' para el usuario ' + Recibe[i].ususen, { color: 'blue' }, { 'duration': '4000' }),1000)*/
+                ohSnap(Recibe[i].mensaje, { color: 'red', 'duration': '5000' });  // alert will have class 'alert-color'
+            }
+        }
+
+        //console.log(Recibe);
+    })
+
+
+
+</script>
+
+@*facho verastegui*@

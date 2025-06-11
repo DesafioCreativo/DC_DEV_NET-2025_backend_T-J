@@ -1,0 +1,965 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery2\\1.10.2\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery2\\1.10.2\\jquery.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery2\\1.10.2\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery2\\1.10.2\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery2\\2.1.4\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery2\\2.1.4\\jquery.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery2\\2.1.4\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery2\\2.1.4\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\README.md",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\README.md"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\browser\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\browser\\signalr.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\browser\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\browser\\signalr.min.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\AbortController.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\AbortController.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\AbortController.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\AbortController.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultReconnectPolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultReconnectPolicy.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultReconnectPolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\DefaultReconnectPolicy.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Errors.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Errors.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Errors.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\FetchHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\FetchHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\FetchHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\FetchHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HandshakeProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HandshakeProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HandshakeProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HandshakeProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HeaderNames.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HeaderNames.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HeaderNames.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HeaderNames.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HttpConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HttpConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HttpConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HttpConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnectionBuilder.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnectionBuilder.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnectionBuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\HubConnectionBuilder.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IHttpConnectionOptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IHttpConnectionOptions.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IHttpConnectionOptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IHttpConnectionOptions.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IHubProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IHubProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ILogger.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ILogger.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ILogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ILogger.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IRetryPolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IRetryPolicy.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\IRetryPolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\IRetryPolicy.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ITransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ITransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ITransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ITransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\JsonHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\JsonHubProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\JsonHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\JsonHubProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Loggers.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Loggers.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Loggers.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\LongPollingTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\LongPollingTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\LongPollingTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\LongPollingTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Polyfills.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Polyfills.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Polyfills.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Polyfills.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ServerSentEventsTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ServerSentEventsTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\ServerSentEventsTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\ServerSentEventsTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Stream.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Stream.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Stream.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Subject.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Subject.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Subject.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Subject.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\TextMessageFormat.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\TextMessageFormat.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\TextMessageFormat.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\TextMessageFormat.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Utils.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Utils.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\Utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\Utils.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\WebSocketTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\WebSocketTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\WebSocketTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\WebSocketTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\XhrHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\XhrHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\XhrHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\XhrHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\browser-index.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\browser-index.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\index.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\cjs\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\cjs\\index.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\AbortController.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\DefaultReconnectPolicy.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Errors.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Errors.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Errors.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Errors.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Errors.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\FetchHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HandshakeProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HeaderNames.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HttpConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\HubConnectionBuilder.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IConnection.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHttpConnectionOptions.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IHubProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ILogger.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\IRetryPolicy.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ITransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\JsonHubProtocol.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Loggers.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\LongPollingTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Polyfills.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\ServerSentEventsTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Stream.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Stream.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Stream.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Stream.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Stream.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Subject.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Subject.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Subject.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Subject.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Subject.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Subject.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\TextMessageFormat.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Utils.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Utils.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Utils.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Utils.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\Utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\Utils.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\WebSocketTransport.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\XhrHttpClient.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\browser-index.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\index.d.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\index.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\index.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\esm\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\esm\\index.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.js.map"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\dist\\webworker\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\package.json",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\package.json"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\AbortController.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\AbortController.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\DefaultHttpClient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\DefaultHttpClient.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\DefaultReconnectPolicy.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\DefaultReconnectPolicy.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Errors.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Errors.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\FetchHttpClient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\FetchHttpClient.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HandshakeProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HandshakeProtocol.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HeaderNames.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HeaderNames.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HttpClient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HttpClient.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HttpConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HttpConnection.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HubConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HubConnection.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\HubConnectionBuilder.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\HubConnectionBuilder.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\IConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\IConnection.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\IHttpConnectionOptions.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\IHttpConnectionOptions.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\IHubProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\IHubProtocol.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\ILogger.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\ILogger.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\IRetryPolicy.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\IRetryPolicy.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\ITransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\ITransport.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\JsonHubProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\JsonHubProtocol.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Loggers.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Loggers.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\LongPollingTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\LongPollingTransport.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Polyfills.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Polyfills.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\ServerSentEventsTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\ServerSentEventsTransport.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Stream.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Stream.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Subject.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Subject.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\TextMessageFormat.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\TextMessageFormat.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\Utils.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\Utils.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\WebSocketTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\WebSocketTransport.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\XhrHttpClient.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\XhrHttpClient.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\browser-index.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\browser-index.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\index.ts",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\index.ts"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\microsoft\\signalR\\src\\third-party-notices.txt",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalR\\src\\third-party-notices.txt"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\README.md",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\README.md"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\bower.json",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\bower.json"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\ohsnap.js",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\ohsnap.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\ohsnap.min.js",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\ohsnap.min.js"
+    },
+    {
+      "Id": "C:\\SBI7\\RepositorioSB\\ThinkAndJob\\ThinkAndJobSolution\\wwwroot\\lib\\ohsnap\\package.json",
+      "PackagePath": "staticwebassets\\lib\\ohsnap\\package.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ThinkAndJobSolution.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ThinkAndJobSolution.props",
+      "PackagePath": "build\\ThinkAndJobSolution.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ThinkAndJobSolution.props",
+      "PackagePath": "buildMultiTargeting\\ThinkAndJobSolution.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ThinkAndJobSolution.props",
+      "PackagePath": "buildTransitive\\ThinkAndJobSolution.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
