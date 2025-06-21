@@ -9,58 +9,51 @@ using Microsoft.AspNetCore.Authorization;
 using ThinkAndJobSolution.Controllers._Helper;
 using System.Dynamic;
 using ThinkAndJobSolution.Controllers._Helper.Ohers;
+using Microsoft.AspNetCore.Identity.Data;
+using ThinkAndJobSolution.Request;
 
 namespace ThinkAndJobSolution.Controllers
 {
-    //[Route("api/[controller]")]
     [Route("api/v1/users")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class AccessController : ControllerBase
     {
         //------------------------------------------ENDPOINTS INICIO------------------------------------------
         // Login
 
         [HttpPost]
-        //[Route(template: "api/v1/users/login")]
-        [Route(template: "login")]
-        public async Task<IActionResult> Login()
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginRequest request)
         {
             LoginData result = new LoginData
             {
                 error = "Error 2932, no se ha podido procesar la petición.",
                 authorized = false
             };
+
             try
             {
-                using System.IO.StreamReader bodyReader = new System.IO.StreamReader(Request.Body, Encoding.UTF8);
-                string data = await bodyReader.ReadToEndAsync();
-                JsonElement json = JsonDocument.Parse(data).RootElement;
-                if (json.TryGetProperty("username", out JsonElement usernameObject) && json.TryGetProperty("password", out JsonElement passwordObject))
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
                 {
-                    string username = usernameObject.GetString();
-                    string pwd = passwordObject.GetString();
+                    conn.Open();
 
-                    using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                    //Intentar iniciar sesión como user
+                    result = tryLoginRJ(request.Username, request.Password, conn);
+
+                    //Intentar iniciar sesión como candidato
+                    if (!result.found)
                     {
-                        conn.Open();
+                        result = tryLoginCA(request.Username, request.Password, conn);
+                    }
 
-                        //Intentar iniciar sesión como user
-                        result = tryLoginRJ(username, pwd, conn);
-
-                        //Intentar iniciar sesión como candidato
-                        if (!result.found)
-                        {
-                            result = tryLoginCA(username, pwd, conn);
-                        }
-
-                        //Intentar iniciar sesión como usuario cliente
-                        if (!result.found)
-                        {
-                            result = tryLoginCL(username, pwd, conn);
-                        }
+                    //Intentar iniciar sesión como usuario cliente
+                    if (!result.found)
+                    {
+                        result = tryLoginCL(request.Username, request.Password, conn);
                     }
                 }
+
                 if (result.authorized)
                 {
                     switch (result.type)
@@ -75,17 +68,19 @@ namespace ThinkAndJobSolution.Controllers
                             result.autoLoginToken = getAutoLoginString("rj", result.id, null, null, null);
                             break;
                     }
+
+                    return Ok(result);
                 }
+
+                return Unauthorized(result);
             }
             catch (Exception e)
             {
-                result = new LoginData
+                return StatusCode(500, new LoginData
                 {
-                    error = "Error 5551, no se ha podido iniciar sesion: " + e.Message
-                };
+                    error = "Error 5551, no se ha podido iniciar sesión: " + e.Message
+                });
             }
-
-            return Ok(result); // Devuelve JSON con código 200 OK
         }
 
 
@@ -111,13 +106,13 @@ namespace ThinkAndJobSolution.Controllers
                     switch (type)
                     {
                         case "rj":
-                            result = tryLoginRJ("", "", conn, loginToken);
+                            result = tryLoginRJ("", "", conn);
                             break;
                         case "ca":
-                            result = tryLoginCA("", "", conn, loginToken);
+                            result = tryLoginCA("", "", conn);
                             break;
                         case "cl":
-                            result = tryLoginCL("", "", conn, loginToken);
+                            result = tryLoginCL("", "", conn);
                             break;
                     }
                 }
@@ -696,18 +691,19 @@ namespace ThinkAndJobSolution.Controllers
         //------------------------------------------CLASES FIN------------------------------------------------
 
         //------------------------------------------FUNCIONES INI---------------------------------------------
-        private static LoginData tryLoginRJ(string username, string pwd, SqlConnection conn, string code = null)
+
+        #region Funciones Login
+
+        private static LoginData tryLoginRJ(string username, string pwd, SqlConnection conn)
         {
             LoginData result = new LoginData { found = false };
 
             bool disabled = false;
             using (SqlCommand command = conn.CreateCommand())
             {
-                command.CommandText = "SELECT * FROM users " +
-                    "WHERE (pwd = @PWD AND (username = @UNAME OR DocID = @UNAME)) OR (@CODE IS NOT NULL AND @CODE = securityToken) ";
+                command.CommandText = "SELECT * FROM users WHERE pwd = @PWD AND username = @UNAME ";
                 command.Parameters.AddWithValue("@UNAME", username);
                 command.Parameters.AddWithValue("@PWD", EncryptString(pwd));
-                command.Parameters.AddWithValue("@CODE", (object)code ?? DBNull.Value);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -716,10 +712,7 @@ namespace ThinkAndJobSolution.Controllers
                         disabled = reader.GetInt32(reader.GetOrdinal("disabled")) == 1;
                         if (disabled)
                         {
-                            result = new LoginData
-                            {
-                                error = "Error 4033, acceso denegado."
-                            };
+                            result.error = "Error 4033, acceso denegado.";
                         }
                         else
                         {
@@ -741,7 +734,6 @@ namespace ThinkAndJobSolution.Controllers
                                 requiresKeepAlive = reader.GetInt32(reader.GetOrdinal("requiresKeepAlive")) == 1,
                                 authorized = true,
                                 type = "user",
-                                //photo = ReadFile(new[] { "users", userId, "photo" })
                             };
                         }
 
@@ -780,25 +772,24 @@ namespace ThinkAndJobSolution.Controllers
             return result;
         }
 
-        private static LoginData tryLoginCA(string username, string pwd, SqlConnection conn, string code = null)
+        private static LoginData tryLoginCA(string username, string pwd, SqlConnection conn)
         {
             LoginData result = new LoginData { found = false };
-            string pwdHash = ComputeStringHash(pwd);
 
             bool failed = false;
             string id = null;
             DateTime? periodoGracia = null;
+            
             using (SqlCommand command = conn.CreateCommand())
             {
                 command.CommandText =
                     "SELECT id, dni, lastSignLink, email_verified, banned, terminosAceptados, ultimoAcceso, periodoGracia, " +
                     "workExists = CASE WHEN EXISTS(SELECT * FROM trabajos WHERE trabajos.signLink = candidatos.lastSignLink) THEN 1 ELSE 0 END " +
                     "FROM candidatos " +
-                    "WHERE (pwd LIKE @PWD AND dni LIKE @DNI) OR (@CODE IS NOT NULL AND @CODE = id) ";
+                    "WHERE pwd = @PWD AND email = @EMAIL ";
 
-                command.Parameters.AddWithValue("@DNI", username);
-                command.Parameters.AddWithValue("@PWD", pwdHash);
-                command.Parameters.AddWithValue("@CODE", (object)code ?? DBNull.Value);
+                command.Parameters.AddWithValue("@EMAIL", username);
+                command.Parameters.AddWithValue("@PWD", ComputeStringHash(pwd));
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -895,23 +886,20 @@ namespace ThinkAndJobSolution.Controllers
             return result;
         }
 
-        private static LoginData tryLoginCL(string username, string pwd, SqlConnection conn, string code = null)
+        private static LoginData tryLoginCL(string username, string pwd, SqlConnection conn)
         {
             LoginData result = new LoginData { found = false };
 
             using (SqlCommand command = conn.CreateCommand())
             {
-                command.CommandText = "SELECT * FROM client_users " +
-                    "WHERE (pwd = @PWD AND username = @UNAME) OR (@CODE IS NOT NULL AND @CODE = token) ";
-                command.Parameters.AddWithValue("@UNAME", username);
+                command.CommandText = "SELECT * FROM client_users WHERE pwd = @PWD AND email = @EMAIL ";
+                command.Parameters.AddWithValue("@EMAIL", username);
                 command.Parameters.AddWithValue("@PWD", EncryptString(pwd));
-                command.Parameters.AddWithValue("@CODE", (object)code ?? DBNull.Value);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-
                         string id = reader.GetString(reader.GetOrdinal("id"));
                         string token = reader.GetString(reader.GetOrdinal("token"));
                         string name = reader.GetString(reader.GetOrdinal("username"));
@@ -977,6 +965,8 @@ namespace ThinkAndJobSolution.Controllers
 
             return result;
         }
+
+        #endregion
 
         public static string getAutoLoginUrl(string userType, string id, string token, SqlConnection lastConn, SqlTransaction transaction)
         {

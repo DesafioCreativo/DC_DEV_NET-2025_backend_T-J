@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ThinkAndJobSolution.Controllers.Authorization;
+using ThinkAndJobSolution.Request;
 
 namespace ThinkAndJobSolution.Controllers
 {
@@ -19,7 +20,7 @@ namespace ThinkAndJobSolution.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
+        public IActionResult Authenticate(UserLoginRequest model)
         {
             var response = _authService.Authenticate(model, ipAddress());
             if (response.RefreshToken != null)

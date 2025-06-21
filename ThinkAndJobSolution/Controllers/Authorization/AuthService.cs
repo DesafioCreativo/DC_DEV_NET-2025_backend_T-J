@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ThinkAndJobSolution.AccesoDato;
+using ThinkAndJobSolution.Request;
 using ThinkAndJobSolution.Security;
 
 namespace ThinkAndJobSolution.Controllers.Authorization
@@ -26,9 +27,9 @@ namespace ThinkAndJobSolution.Controllers.Authorization
             _cl_Encryption = cl_Encryption;
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress)
+        public AuthenticateResponse Authenticate(UserLoginRequest model, string ipAddress)
         {
-            LoginData loginData = AccessController.getLoginData(model.username, model.password);
+            LoginData loginData = AccessController.getLoginData(model.Username, model.Password);
 
             if (loginData.error.ToString() == "False") {
                 var jwtToken = _jwtUtils.GenerateJwtToken(loginData);
