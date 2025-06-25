@@ -10,7 +10,7 @@ namespace ThinkAndJobSolution.Controllers._Helper
         public static readonly string NIF_REPRESENTANTE = "47021446Q";
 
         //CONECCIONES LOCALES
-        public static readonly string CONNECTION_STRING = "Data Source=3.148.234.194;Initial Catalog=thinkandjob_db;User ID=sa;Password=hS4f9gXKqf12CdHHHGwFqHnhy4IanXBW;TrustServerCertificate=True"; //TODO: Cambiar        
+        public static readonly string CONNECTION_STRING = "Data Source=3.133.152.159;Initial Catalog=thinkandjob_db;User ID=sa;Password=hS4f9gXKqf12CdHHHGwFqHnhy4IanXBW;TrustServerCertificate=True"; //TODO: Cambiar        
         /*public static readonly string CONNECTION_STRING = "Data Source=DESKTOP-CM5I9HA\\MSSQLSERVER01;Initial Catalog=thinkandjob_db;Integrated Security=True;Encrypt=False";*/ //TODO: Cambiar        
 
         public static readonly string SUGGESTIONS_AND_COMPLAINTS_EMAIL = "buzon@rentingjob.es";

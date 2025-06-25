@@ -17,15 +17,15 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ThinkAndJobSolution
 build_property.RootNamespace = ThinkAndJobSolution
-build_property.ProjectDir = C:\SBI7\RepositorioSB\ThinkAndJob\ThinkAndJobSolution\
+build_property.ProjectDir = D:\Mauricio\Proyectos\ThinkAndJob\BackEnd\DC_DEV_NET-2025_backend_T-J\ThinkAndJobSolution\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\SBI7\RepositorioSB\ThinkAndJob\ThinkAndJobSolution
+build_property.MSBuildProjectDirectory = D:\Mauricio\Proyectos\ThinkAndJob\BackEnd\DC_DEV_NET-2025_backend_T-J\ThinkAndJobSolution
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/SBI7/RepositorioSB/ThinkAndJob/ThinkAndJobSolution/Views/Web/Index.cshtml]
+[D:/Mauricio/Proyectos/ThinkAndJob/BackEnd/DC_DEV_NET-2025_backend_T-J/ThinkAndJobSolution/Views/Web/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2ViXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authorization\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authorization\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authorization\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authorization\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\_helper\\installationconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\_helper\\installationconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\accesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\accesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\hostedservices\\alertahostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\hostedservices\\alertahostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\hostedservices\\alertahostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\hostedservices\\alertahostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,38 +35,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Authorization\\IAuthService.cs",
-              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\Authorization\\IAuthService.cs",
-              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Authorization\\IAuthService.cs",
-              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\Authorization\\IAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA6AAAA",
+              "Title": "InstallationConstants.cs",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
+              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T00:54:18.357Z",
+              "WhenOpened": "2025-06-25T17:33:48.722Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Authorization\\AuthService.cs",
-              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\Authorization\\AuthService.cs",
-              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Authorization\\AuthService.cs",
-              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\Authorization\\AuthService.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAwB8AAABXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T00:51:03.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "AccessController.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\AccessController.cs",
-              "ViewState": "AQIAALcCAAAAAAAAAADwv9MDAACNAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAuwCQAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T12:49:45.375Z",
               "EditorCaption": ""
@@ -89,28 +72,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AuthController.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAcwBgAAAAvAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAcwBgAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T15:08:24.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Program.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Program.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Program.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Program.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAqwIMAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T15:02:50.297Z"
+              "WhenOpened": "2025-06-04T15:02:50.297Z",
+              "EditorCaption": ""
             }
           ]
         }
