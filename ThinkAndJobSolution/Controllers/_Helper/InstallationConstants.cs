@@ -27,7 +27,7 @@ namespace ThinkAndJobSolution.Controllers._Helper
 
 
         //public static readonly string PUBLIC_URL = "https://rentingjob.local:44313";
-        public static readonly string PUBLIC_URL = "https://jobtojob.local:44313";
+        public static readonly string PUBLIC_URL = "http://qa.thinkandjob.com.s3-website.us-east-2.amazonaws.com";
 
         public static readonly string WIN_PYTHON_OSFFICE = "\"C:\\Program Files (x86)\\OpenOffice 4\\program\\python.exe\"";
         public static readonly string WIN_UNICONV = "\"C:\\Program Files(x86)\\OpenOffice 4\\program\\unoconv-0.8.2\\unoconv-0.8.2\\unoconv\"";

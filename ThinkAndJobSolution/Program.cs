@@ -1,19 +1,17 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using System.Text;
 using ThinkAndJobSolution.AccesoDato;
-using ThinkAndJobSolution.Security;
-using Newtonsoft.Json.Serialization;
-using ThinkAndJobSolution.Utils.Interfaces;
-using ThinkAndJobSolution.Utils;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using WebApi.HostedServices;
 using ThinkAndJobSolution.Controllers.Authorization;
+using ThinkAndJobSolution.Security;
+using ThinkAndJobSolution.Utils;
+using ThinkAndJobSolution.Utils.Interfaces;
+using WebApi.HostedServices;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 var key = Encoding.ASCII.GetBytes(builder.Configuration["AppSettings:Secret"]);
 
 // Configuración de JWT

@@ -1,4 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
+using ThinkAndJobSolution.Utils;
+using Microsoft.Extensions.Options;
 
 namespace ThinkAndJobSolution.Controllers._Helper.Ohers
 {
@@ -98,33 +102,55 @@ namespace ThinkAndJobSolution.Controllers._Helper.Ohers
                     }
 
                     mail.idOriginal = logId.Value;
-                    if (mail.attachments != null && mail.attachments.Count > 0) mail.attachmentsDir = HelperMethods.ComposePath(new[] { "email", logId.Value.ToString() }, false);
+                    if (mail.attachments != null && mail.attachments.Count > 0)
+                        mail.attachmentsDir = HelperMethods.ComposePath(new[] { "email", logId.Value.ToString() }, false);
 
-                    if (HelperMethods.CARTERO_CONNECTION_STRING != null)
-                    {
-                        using (SqlConnection conn = new SqlConnection(HelperMethods.CARTERO_CONNECTION_STRING))
-                        {
-                            conn.Open();
-                            using (SqlCommand command = new SqlCommand("dbo.sp_send_email", conn))
-                            {
-                                command.CommandText =
-                                    "INSERT INTO mails " +
-                                    "(id_original, to_email, to_name, from_name, reply_mail, reply_name, subject, body, attachments, priority) VALUES " +
-                                    "(@OID, @TOMAIL, @TONAME, @FROMNAME, @REPLYMAIL, @REPLYNAME, @SUBJECT, @BODY, @ATTACHMENTS, @PRIORITY)";
-                                command.Parameters.AddWithValue("@OID", mail.idOriginal);
-                                command.Parameters.AddWithValue("@TOMAIL", mail.toEmail);
-                                command.Parameters.AddWithValue("@TONAME", (object)mail.toName ?? DBNull.Value);
-                                command.Parameters.AddWithValue("@FROMNAME", (object)mail.fromName ?? DBNull.Value);
-                                command.Parameters.AddWithValue("@REPLYMAIL", (object)mail.replyEmail ?? DBNull.Value);
-                                command.Parameters.AddWithValue("@REPLYNAME", (object)mail.replyName ?? DBNull.Value);
-                                command.Parameters.AddWithValue("@SUBJECT", mail.subject);
-                                command.Parameters.AddWithValue("@BODY", mail.body);
-                                command.Parameters.AddWithValue("@ATTACHMENTS", (object)mail.attachmentsDir ?? DBNull.Value);
-                                command.Parameters.AddWithValue("@PRIORITY", (int)mail.priority);
-                                command.ExecuteNonQuery();
-                            }
-                        }
-                    }
+
+                    //MailMessage mensaje = new MailMessage();
+                    //mensaje.From = new MailAddress(_emailSettings.Username);
+                    //mensaje.To.Add(mail.toEmail);
+                    //mensaje.Subject = mail.subject;
+                    //mensaje.Body = mail.body;
+                    //mensaje.IsBodyHtml = true;
+
+                    //SmtpClient cliente = new SmtpClient(_emailSettings.Host, _emailSettings.Port);
+                    //cliente.Credentials = new NetworkCredential(_emailSettings.Username, _emailSettings.Password);
+                    //cliente.EnableSsl = true;
+
+                    //try
+                    //{
+                    //    cliente.Send(mensaje);
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    throw new Exception("Error al enviar correo: " + ex.Message, ex);
+                    //}
+
+                    //if (HelperMethods.CARTERO_CONNECTION_STRING != null)
+                    //{
+                    //    using (SqlConnection conn = new SqlConnection(HelperMethods.CARTERO_CONNECTION_STRING))
+                    //    {
+                    //        conn.Open();
+                    //        using (SqlCommand command = new SqlCommand("dbo.sp_send_email", conn))
+                    //        {
+                    //            command.CommandText =
+                    //                "INSERT INTO mails " +
+                    //                "(id_original, to_email, to_name, from_name, reply_mail, reply_name, subject, body, attachments, priority) VALUES " +
+                    //                "(@OID, @TOMAIL, @TONAME, @FROMNAME, @REPLYMAIL, @REPLYNAME, @SUBJECT, @BODY, @ATTACHMENTS, @PRIORITY)";
+                    //            command.Parameters.AddWithValue("@OID", mail.idOriginal);
+                    //            command.Parameters.AddWithValue("@TOMAIL", mail.toEmail);
+                    //            command.Parameters.AddWithValue("@TONAME", (object)mail.toName ?? DBNull.Value);
+                    //            command.Parameters.AddWithValue("@FROMNAME", (object)mail.fromName ?? DBNull.Value);
+                    //            command.Parameters.AddWithValue("@REPLYMAIL", (object)mail.replyEmail ?? DBNull.Value);
+                    //            command.Parameters.AddWithValue("@REPLYNAME", (object)mail.replyName ?? DBNull.Value);
+                    //            command.Parameters.AddWithValue("@SUBJECT", mail.subject);
+                    //            command.Parameters.AddWithValue("@BODY", mail.body);
+                    //            command.Parameters.AddWithValue("@ATTACHMENTS", (object)mail.attachmentsDir ?? DBNull.Value);
+                    //            command.Parameters.AddWithValue("@PRIORITY", (int)mail.priority);
+                    //            command.ExecuteNonQuery();
+                    //        }
+                    //    }
+                    //}
                     status = null;
                 }
                 catch (Exception e)
@@ -133,6 +159,123 @@ namespace ThinkAndJobSolution.Controllers._Helper.Ohers
                 }
             }
 
+            return status;
+        }
+
+        public static string SendEmail(Email mail, EmailSettings _emailSettings)
+        {
+            string? status = null;
+
+            try
+            {
+                // 1. Construir el cuerpo del email a partir de plantillas
+                try
+                {
+                    mail.body = ApplyTemplate(mail.template, mail.inserts ?? new Dictionary<string, string>());
+
+                    if (!mail.skipMasterTemplate)
+                    {
+                        mail.body = ApplyTemplate("masterTemplate", new Dictionary<string, string>
+                        {
+                            { "html", mail.body }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return $"Error al aplicar plantilla: {ex.Message}";
+                }
+
+
+                // 2. Registrar el intento de envío en el log
+                int? logId = null;
+                try
+                {
+                    bool isComplaintOrSuggestion = mail.subject == "Complaint" || mail.subject == "Suggestion";
+                    logId = LogEmail(mail, isComplaintOrSuggestion ? mail.subject : null);
+
+                    if (logId == null)
+                        return "Error al registrar el envío en el log.";
+                }
+                catch (Exception ex)
+                {
+                    return $"Error al logear email: {ex.Message}";
+                }
+
+
+                mail.idOriginal = logId.Value;
+
+                // 3. Preparar ruta de adjuntos (si aplica)
+                if (mail.attachments != null && mail.attachments.Count > 0)
+                {
+                    mail.attachmentsDir = HelperMethods.ComposePath(new[] { "email", logId.Value.ToString() }, false);
+                }
+
+
+                // 4. Preparar y enviar el email via SMTP
+                using (MailMessage mensaje = new MailMessage())
+                {
+                    // Configurar remitente
+                    string fromDisplayName = mail.fromName ?? "No-Reply";
+                    mensaje.From = new MailAddress(_emailSettings.Username, fromDisplayName);
+
+                    // Destinatario
+                    mensaje.To.Add(mail.toEmail);
+
+                    // Asunto y cuerpo
+                    mensaje.Subject = mail.subject;
+                    mensaje.Body = mail.body;
+                    mensaje.IsBodyHtml = true;
+
+                    // Reply-To (si aplica)
+                    if (!string.IsNullOrEmpty(mail.replyEmail))
+                    {
+                        string replyName = mail.replyName ?? mail.username ?? "Reply";
+                        mensaje.ReplyToList.Add(new MailAddress(mail.replyEmail, replyName));
+                    }
+
+                    // Adjuntos desde Base64 (si aplica)
+                    if (mail.attachments != null)
+                    {
+                        foreach (var attachment in mail.attachments)
+                        {
+                            if (!string.IsNullOrEmpty(attachment.base64) && !string.IsNullOrEmpty(attachment.filename))
+                            {
+                                try
+                                {
+                                    byte[] fileBytes = Convert.FromBase64String(attachment.base64);
+                                    MemoryStream stream = new MemoryStream(fileBytes);
+                                    Attachment mailAttachment = new Attachment(stream, attachment.filename);
+                                    mensaje.Attachments.Add(mailAttachment);
+                                }
+                                catch (Exception ex)
+                                {
+                                    return $"Error procesando adjunto '{attachment.filename}': {ex.Message}";
+                                }
+                            }
+                        }
+                    }
+
+                    using (SmtpClient smtpClient = new SmtpClient(_emailSettings.Host, _emailSettings.Port))
+                    {
+                        smtpClient.Credentials = new NetworkCredential(_emailSettings.Username, _emailSettings.Password);
+                        smtpClient.EnableSsl = true;
+
+                        try
+                        {
+                            smtpClient.Send(mensaje);
+                        }
+                        catch (Exception ex)
+                        {
+                            return $"Error al enviar correo: {ex.Message}";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                status = $"Error inesperado al enviar email: {ex.Message}";
+            }
             return status;
         }
 

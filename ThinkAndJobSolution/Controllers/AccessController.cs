@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using System.Text.Json;
-using System.Text;
-using static ThinkAndJobSolution.Controllers._Helper.HelperMethods;
-using ThinkAndJobSolution.Controllers.Authorization;
-using Microsoft.AspNetCore.Authorization;
-using ThinkAndJobSolution.Controllers._Helper;
+using Microsoft.Extensions.Options;
 using System.Dynamic;
+using System.Text;
+using System.Text.Json;
+using ThinkAndJobSolution.Controllers._Helper;
 using ThinkAndJobSolution.Controllers._Helper.Ohers;
-using Microsoft.AspNetCore.Identity.Data;
+using ThinkAndJobSolution.Controllers.Authorization;
 using ThinkAndJobSolution.Request;
+using ThinkAndJobSolution.Utils;
+using static ThinkAndJobSolution.Controllers._Helper.HelperMethods;
 
 namespace ThinkAndJobSolution.Controllers
 {
@@ -19,8 +18,12 @@ namespace ThinkAndJobSolution.Controllers
     //[Authorize]
     public class AccessController : ControllerBase
     {
-        //------------------------------------------ENDPOINTS INICIO------------------------------------------
-        // Login
+        private readonly EmailSettings _emailSettings;
+
+        public AccessController(IOptions<EmailSettings> emailSettings)
+        {
+            _emailSettings = emailSettings.Value;
+        }
 
         [HttpPost]
         [Route("login")]
@@ -305,179 +308,184 @@ namespace ThinkAndJobSolution.Controllers
         // Recuperacion de pwd
 
         [HttpPost]
-        [Route(template: "recover")]
-        public async Task<IActionResult> SendRecoveryMail()
+        [Route("recover")]
+        public async Task<IActionResult> SendRecoveryMail([FromBody] string email)
         {
-            object result = new
+            object result;
+            try
             {
-                error = "Error 2932, no se ha podido procesar la petición."
-            };
-            using StreamReader readerBody = new StreamReader(Request.Body, Encoding.UTF8);
-            string data = await readerBody.ReadToEndAsync();
-            JsonElement json = JsonDocument.Parse(data).RootElement;
-
-            if (json.TryGetProperty("email", out JsonElement emailJson))
-            {
-
-                try
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
                 {
-                    string email = emailJson.GetString()?.Trim();
+                    await conn.OpenAsync();
 
-                    using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                    string? candidateId = null;
+                    string? userId = null;
+                    string? clientUserId = null;
+                    bool emailVerified = true;
+
+                    // 1. Verificar si es un candidato
+                    using (SqlCommand cmd = conn.CreateCommand())
                     {
-                        conn.Open();
+                        cmd.CommandText = "SELECT id, email_verified FROM candidatos WHERE email = @EMAIL";
+                        cmd.Parameters.AddWithValue("@EMAIL", email);
 
-                        //Comprobar a quien pertenece el correo
-                        bool emailVerified = true;
-                        string candidateId = null, userId = null, clientUserId = null;
-
-                        //Comprobar si es de un candidato
-                        using (SqlCommand command = conn.CreateCommand())
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                         {
-                            command.CommandText = "SELECT id, email_verified FROM candidatos WHERE email = @EMAIL";
-                            command.Parameters.AddWithValue("@EMAIL", email);
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            if (await reader.ReadAsync())
                             {
-                                if (reader.Read())
+                                candidateId = reader.GetString(reader.GetOrdinal("id"));
+                                emailVerified = reader.GetInt32(reader.GetOrdinal("email_verified")) == 1;
+                            }
+                        }
+                    }
+
+                    // 2. Verificar si es un usuario RJ
+                    if (candidateId == null)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "SELECT id FROM users WHERE email = @EMAIL";
+                            cmd.Parameters.AddWithValue("@EMAIL", email);
+
+                            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (await reader.ReadAsync())
                                 {
-                                    candidateId = reader.GetString(reader.GetOrdinal("id"));
-                                    emailVerified = reader.GetInt32(reader.GetOrdinal("email_verified")) == 1;
+                                    userId = reader.GetString(reader.GetOrdinal("id"));
                                 }
                             }
                         }
+                    }
 
-                        //Comprobar si es de un usuario RJ
-                        if (candidateId == null)
+                    // 3. Verificar si es un client_user
+                    if (candidateId == null && userId == null)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
                         {
-                            using (SqlCommand command = conn.CreateCommand())
+                            cmd.CommandText = "SELECT id FROM client_users WHERE email = @EMAIL";
+                            cmd.Parameters.AddWithValue("@EMAIL", email);
+
+                            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                             {
-                                command.CommandText = "SELECT id FROM users WHERE email = @EMAIL";
-                                command.Parameters.AddWithValue("@EMAIL", email);
-                                using (SqlDataReader reader = command.ExecuteReader())
+                                if (await reader.ReadAsync())
                                 {
-                                    if (reader.Read())
-                                    {
-                                        userId = reader.GetString(reader.GetOrdinal("id"));
-                                    }
+                                    clientUserId = reader.GetString(reader.GetOrdinal("id"));
                                 }
                             }
                         }
+                    }
 
-                        //Comprobar si es un usuario CL
-                        if (candidateId == null)
+                    // 4. Validar que el email exista en alguna tabla
+                    if (candidateId == null && userId == null && clientUserId == null)
+                    {
+                        return Ok(new { error = "Error 4573, el email no pertenece a ningún usuario." });
+                    }
+
+                    // 5. Si es candidato, validar que tenga email confirmado
+                    if (candidateId != null && !emailVerified)
+                    {
+                        return Ok(new { error = "Error 4573, el email no está validado, no puede usarse." });
+                    }
+
+                    // 6. Buscar si ya tiene un código de recuperación
+                    string? existingCode = null;
+                    DateTime existingExpiration = DateTime.Now;
+
+                    string whereClause = "";
+                    string idValue = "";
+
+                    if (candidateId != null)
+                    {
+                        whereClause = "candidateId = @ID";
+                        idValue = candidateId;
+                    }
+                    else if (userId != null)
+                    {
+                        whereClause = "userId = @ID";
+                        idValue = userId;
+                    }
+                    else if (clientUserId != null)
+                    {
+                        whereClause = "clientUserId = @ID";
+                        idValue = clientUserId;
+                    }
+
+                    if (!string.IsNullOrEmpty(whereClause))
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
                         {
-                            using (SqlCommand command = conn.CreateCommand())
+                            cmd.CommandText = $"SELECT code, expiration FROM recovery_codes WHERE {whereClause}";
+                            cmd.Parameters.AddWithValue("@ID", idValue);
+
+                            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                             {
-                                command.CommandText = "SELECT id FROM client_users WHERE email = @EMAIL";
-                                command.Parameters.AddWithValue("@EMAIL", email);
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        clientUserId = reader.GetString(reader.GetOrdinal("id"));
-                                    }
-                                }
-                            }
-                        }
-
-                        //Al menos de alguien debe ser
-                        if (candidateId == null && userId == null && clientUserId == null)
-                        {
-                            return Ok(new { error = "Error 4573, el email no pertenece a ningún usuario." });
-                        }
-
-                        //En el caso de los candidatos, deben tener el email validado
-                        if (!emailVerified)
-                        {
-                            return Ok(new { error = "Error 4573, el email no está validado, no puede usarse." });
-                        }
-
-                        //Comprobar si ya tiene un codigo de recuperacion
-                        string existingCode = null;
-                        DateTime existingExpiration = DateTime.Now;
-                        using (SqlCommand command = conn.CreateCommand())
-                        {
-                            command.CommandText = "SELECT code, expiration FROM recovery_codes WHERE " +
-                                                  "(@CANDIDATE IS NOT NULL AND @CANDIDATE = candidateId) OR " +
-                                                  "(@USER IS NOT NULL AND @USER = userId) OR " +
-                                                  "(@CLIENTUSER IS NOT NULL AND @CLIENTUSER = clientUserId)";
-                            command.Parameters.AddWithValue("@CANDIDATE", (object)candidateId ?? DBNull.Value);
-                            command.Parameters.AddWithValue("@USER", (object)userId ?? DBNull.Value);
-                            command.Parameters.AddWithValue("@CLIENTUSER", (object)clientUserId ?? DBNull.Value);
-                            using (SqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
+                                if (await reader.ReadAsync())
                                 {
                                     existingCode = reader.GetString(reader.GetOrdinal("code"));
                                     existingExpiration = reader.GetDateTime(reader.GetOrdinal("expiration"));
                                 }
                             }
                         }
+                    }
 
-                        //Si ya tiene un codigo, comprobar que haya caducado
-                        if (existingCode != null)
+                    // 7. Si ya tiene un código, eliminarlo (omitimos tiempo de espera para permitir reenviar)
+                    if (existingCode != null)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
                         {
-                            int elapse = (int)(existingExpiration - DateTime.Now).TotalSeconds;
-                            if (elapse > 0)
-                            {
-                                return Ok(new
-                                {
-                                    error = "Error 4575, no se puede volver a enviar hasta dentro de " +
-                                            HowManyDays(elapse) + "."
-                                });
-                            }
-
-                            //Eliminarlo
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "DELETE FROM recovery_codes WHERE code = @CODE";
-                                command.Parameters.AddWithValue("@CODE", existingCode);
-                                command.ExecuteNonQuery();
-                            }
-                        }
-
-                        //Generar un codigo nuevo
-                        string code =
-                            ComputeStringHash(candidateId + email + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())
-                                .Substring(0, 8).ToUpper();
-                        using (SqlCommand command = conn.CreateCommand())
-                        {
-                            command.CommandText =
-                                "INSERT INTO recovery_codes (code, candidateId, userId, clientUserId) VALUES (@CODE, @CANDIDATE, @USER, @CLIENTUSER)";
-                            command.Parameters.AddWithValue("@CODE", code);
-                            command.Parameters.AddWithValue("@CANDIDATE", (object)candidateId ?? DBNull.Value);
-                            command.Parameters.AddWithValue("@USER", (object)userId ?? DBNull.Value);
-                            command.Parameters.AddWithValue("@CLIENTUSER", (object)clientUserId ?? DBNull.Value);
-                            command.ExecuteNonQuery();
-                        }
-
-                        //Enviar el correo con el enlace
-                        Dictionary<string, string> inserts = new Dictionary<string, string>();
-                        inserts["url"] = InstallationConstants.PUBLIC_URL + "/access?recovery=" + code;
-
-                        string error = EventMailer.SendEmail(new EventMailer.Email()
-                        {
-                            template = "recovery",
-                            inserts = inserts,
-                            toEmail = email,
-                            subject = "[Think&Job] Recuperacion de contraseña",
-                            priority = EventMailer.EmailPriority.IMMEDIATE
-                        });
-
-                        if (error != null)
-                        {
-                            result = new { error };
-                        }
-                        else
-                        {
-                            result = new { error = false };
+                            cmd.CommandText = "DELETE FROM recovery_codes WHERE code = @CODE";
+                            cmd.Parameters.AddWithValue("@CODE", existingCode);
+                            await cmd.ExecuteNonQueryAsync();
                         }
                     }
+
+                    // 8. Generar un nuevo código
+                    string code = ComputeStringHash((candidateId ?? userId ?? clientUserId) + email + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())
+                                  .Substring(0, 8)
+                                  .ToUpper();
+
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"
+                            INSERT INTO recovery_codes (code, candidateId, userId, clientUserId)
+                            VALUES (@CODE, @CANDIDATE, @USER, @CLIENTUSER)";
+
+                        cmd.Parameters.AddWithValue("@CODE", code);
+                        cmd.Parameters.AddWithValue("@CANDIDATE", (object)candidateId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@USER", (object)userId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@CLIENTUSER", (object)clientUserId ?? DBNull.Value);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+
+                    // 9. Enviar el email
+                    var inserts = new Dictionary<string, string>
+                    {
+                        ["url"] = InstallationConstants.PUBLIC_URL + "/access?recovery=" + code
+                    };
+
+                    string error = EventMailer.SendEmail(new EventMailer.Email
+                    {
+                        template = "recovery",
+                        inserts = inserts,
+                        toEmail = email,
+                        subject = "[Think&Job] Recuperación de contraseña",
+                        priority = EventMailer.EmailPriority.IMMEDIATE
+                    }, _emailSettings);
+
+                    if (error != null)
+                    {
+                        result = new { error };
+                    }
+                    else
+                    {
+                        result = new { error = false };
+                    }
                 }
-                catch (Exception)
-                {
-                    result = new { error = "Error 5571, no se ha podido generar el enlace de recuperación" };
-                }
+            }
+            catch (Exception)
+            {
+                result = new { error = "Error 5571, no se ha podido generar el enlace de recuperación" };
             }
 
             return Ok(result);
@@ -697,11 +705,10 @@ namespace ThinkAndJobSolution.Controllers
         private static LoginData tryLoginRJ(string username, string pwd, SqlConnection conn)
         {
             LoginData result = new LoginData { found = false };
-
             bool disabled = false;
             using (SqlCommand command = conn.CreateCommand())
             {
-                command.CommandText = "SELECT * FROM users WHERE pwd = @PWD AND username = @UNAME ";
+                command.CommandText = "SELECT * FROM users WHERE pwd = @PWD AND email = @UNAME ";
                 command.Parameters.AddWithValue("@UNAME", username);
                 command.Parameters.AddWithValue("@PWD", EncryptString(pwd));
 
@@ -779,7 +786,6 @@ namespace ThinkAndJobSolution.Controllers
             bool failed = false;
             string id = null;
             DateTime? periodoGracia = null;
-            
             using (SqlCommand command = conn.CreateCommand())
             {
                 command.CommandText =
@@ -895,7 +901,7 @@ namespace ThinkAndJobSolution.Controllers
                 command.CommandText = "SELECT * FROM client_users WHERE pwd = @PWD AND email = @EMAIL ";
                 command.Parameters.AddWithValue("@EMAIL", username);
                 command.Parameters.AddWithValue("@PWD", EncryptString(pwd));
-
+                var aaa = EncryptString(pwd);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
