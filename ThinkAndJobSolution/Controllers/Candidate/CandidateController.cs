@@ -1979,7 +1979,7 @@ namespace ThinkAndJobSolution.Controllers.Candidate
         //Actualizacion
 
         [HttpPut]
-        [Route(template: "/")]
+        //[Route(template: "/")]
         public async Task<IActionResult> UpdateCandidate()
         {
             string candidateId = Cl_Security.getSecurityInformation(User, "candidateId");
