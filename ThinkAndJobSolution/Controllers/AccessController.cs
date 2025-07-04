@@ -312,6 +312,7 @@ namespace ThinkAndJobSolution.Controllers
 
         #region Recuperacion de password
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("recover")]
         public async Task<IActionResult> SendRecoveryMail([FromBody] string email)
@@ -496,6 +497,7 @@ namespace ThinkAndJobSolution.Controllers
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route(template: "recover-password")]
         public async Task<IActionResult> ChangePass([FromBody] ChangePasswordRequest request)
@@ -764,7 +766,7 @@ namespace ThinkAndJobSolution.Controllers
                     "SELECT id, dni, lastSignLink, email_verified, banned, terminosAceptados, ultimoAcceso, periodoGracia, " +
                     "workExists = CASE WHEN EXISTS(SELECT * FROM trabajos WHERE trabajos.signLink = candidatos.lastSignLink) THEN 1 ELSE 0 END " +
                     "FROM candidatos " +
-                    "WHERE pwd = @PWD AND email = @EMAIL ";
+                    "WHERE CAST(pwd AS VARCHAR(MAX)) = @PWD AND email = @EMAIL ";
 
                 command.Parameters.AddWithValue("@EMAIL", username);
                 command.Parameters.AddWithValue("@PWD", ComputeStringHash(pwd));

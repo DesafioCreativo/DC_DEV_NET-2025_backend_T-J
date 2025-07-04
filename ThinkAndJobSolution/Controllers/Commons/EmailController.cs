@@ -644,9 +644,10 @@ namespace ThinkAndJobSolution.Controllers.Commons
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route(template: "suggestions-and-complaints")]
-        public async Task<IActionResult> SendSuggestionAndComplints(string type, string description)
+        public async Task<IActionResult> SendSuggestionAndComplints(string? type, string? description)
         {
             object result = new
             {
