@@ -48,7 +48,6 @@ builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IDataAccess, DataAccess>();
 builder.Services.AddScoped<ICl_Encryption, Cl_Encryption>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-//builder.Services.AddScoped<ICl_Libreria, Cl_Libreria>();
 builder.Services.AddScoped<ICl_Helpers, Cl_Helpers>();
 
 // Registrar SignalR y el Hosted Service

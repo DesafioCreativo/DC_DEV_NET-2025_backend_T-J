@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using System.Dynamic;
 using System.Text;
-using System.Text.Json;
 using ThinkAndJobSolution.Controllers._Helper;
 using ThinkAndJobSolution.Controllers._Helper.Ohers;
 using ThinkAndJobSolution.Controllers.Authorization;
@@ -24,6 +24,8 @@ namespace ThinkAndJobSolution.Controllers
         {
             _emailSettings = emailSettings.Value;
         }
+
+        #region Login
 
         [HttpPost]
         [Route("login")]
@@ -86,7 +88,6 @@ namespace ThinkAndJobSolution.Controllers
             }
         }
 
-
         [HttpGet]
         [Route(template: "auto-login/{code}")]
         public IActionResult AutoLogin(string code)
@@ -132,7 +133,9 @@ namespace ThinkAndJobSolution.Controllers
             return Ok(result);
         }
 
-        // TyC
+        #endregion
+
+        #region Terminos y Condiciones
 
         [HttpPatch]
         [Route(template: "accept-terms/{type}/{id}")]
@@ -305,7 +308,9 @@ namespace ThinkAndJobSolution.Controllers
             return Ok(result);
         }
 
-        // Recuperacion de pwd
+        #endregion
+
+        #region Recuperacion de password
 
         [HttpPost]
         [Route("recover")]
@@ -493,167 +498,171 @@ namespace ThinkAndJobSolution.Controllers
 
         [HttpPost]
         [Route(template: "recover-password")]
-        public async Task<IActionResult> ChangePass()
+        public async Task<IActionResult> ChangePass([FromBody] ChangePasswordRequest request)
         {
-            object result = new
-            {
-                error = "Error 2932, no se ha podido procesar la petición."
-            };
-            using StreamReader readerBody = new StreamReader(Request.Body, Encoding.UTF8);
-            string data = await readerBody.ReadToEndAsync();
-            JsonElement json = JsonDocument.Parse(data).RootElement;
+            object result = new { error = "Error 2932, no se ha podido procesar la petición." };
 
-            if (json.TryGetProperty("pass", out JsonElement passJson) && json.TryGetProperty("code", out JsonElement codeJson))
+            try
             {
-                try
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
                 {
-                    string pass = passJson.GetString()?.Trim();
-                    string code = codeJson.GetString()?.Trim();
+                    await conn.OpenAsync();
 
-                    using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                    string? candidateId = null, userId = null, clientUserId = null;
+                    DateTime expiration = DateTime.Now;
+
+                    // 1. Buscar código de recuperación
+                    using (SqlCommand command = conn.CreateCommand())
                     {
-                        conn.Open();
+                        command.CommandText = "SELECT candidateId, userId, clientUserId, expiration FROM recovery_codes WHERE code = @CODE";
+                        command.Parameters.AddWithValue("@CODE", request.RecoveryCode);
 
-                        //Obtener los datos del codigo de recuperacion
-                        string candidateId = null, userId = null, clientUserId = null;
-                        DateTime expiration = DateTime.Now;
-                        using (SqlCommand command = conn.CreateCommand())
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            command.CommandText = "SELECT candidateId, userId, clientUserId, expiration FROM recovery_codes " +
-                                "WHERE code LIKE @CODE";
-
-                            command.Parameters.AddWithValue("@CODE", code);
-
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            if (await reader.ReadAsync())
                             {
-                                if (reader.Read())
-                                {
-                                    candidateId = reader.IsDBNull(reader.GetOrdinal("candidateId")) ? null : reader.GetString(reader.GetOrdinal("candidateId"));
-                                    userId = reader.IsDBNull(reader.GetOrdinal("userId")) ? null : reader.GetString(reader.GetOrdinal("userId"));
-                                    clientUserId = reader.IsDBNull(reader.GetOrdinal("clientUserId")) ? null : reader.GetString(reader.GetOrdinal("clientUserId"));
-                                    expiration = reader.GetDateTime(reader.GetOrdinal("expiration"));
-                                }
+                                candidateId = reader["candidateId"] as string;
+                                userId = reader["userId"] as string;
+                                clientUserId = reader["clientUserId"] as string;
+                                expiration = (DateTime)reader["expiration"];
                             }
-                        }
-
-                        //De alguien tiene que ser
-                        if (candidateId == null && userId == null && clientUserId == null)
-                        {
-                            return Ok(new { error = "Error 4413, codigo de recuperacion no reconocido." });
-                        }
-
-                        //Comprobar si esta caducado
-                        int elapse = (int)(expiration - DateTime.Now).TotalSeconds;
-                        if (elapse < 0)
-                        {
-                            return Ok(new { error = "Error 4414, el codigo de recuperación caduco hace " + HowManyDays(-elapse) + "." });
-                        }
-
-                        //Aplicar el cambio y recolectar datos para el email
-                        string email = null, name = null;
-                        if (candidateId != null)
-                        {
-                            string dni = null;
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "SELECT CONCAT(nombre, ' ', apellidos) as name, email, dni FROM candidatos WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", candidateId);
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        email = reader.GetString(reader.GetOrdinal("email"));
-                                        name = reader.GetString(reader.GetOrdinal("name"));
-                                        dni = reader.GetString(reader.GetOrdinal("dni"));
-                                    }
-                                }
-                            }
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "UPDATE candidatos SET pwd = @PWD WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", candidateId);
-                                command.Parameters.AddWithValue("@PWD", ComputeStringHash(pass));
-                                command.ExecuteNonQuery();
-                            }
-                            if (dni != null) LogToDB(LogType.CANDIDATE_PASS_RECOVER, "Contraseña de candidato cambiada " + dni, null, conn);
-                        }
-                        if (userId != null)
-                        {
-                            string username = null;
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "SELECT CONCAT(name, ' ', surname) as name, email, username FROM users WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", userId);
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        email = reader.GetString(reader.GetOrdinal("email"));
-                                        name = reader.GetString(reader.GetOrdinal("name"));
-                                        username = reader.GetString(reader.GetOrdinal("username"));
-                                    }
-                                }
-                            }
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "UPDATE users SET pwd = @PWD WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", userId);
-                                command.Parameters.AddWithValue("@PWD", EncryptString(pass));
-                                command.ExecuteNonQuery();
-                            }
-                            if (username != null) LogToDB(LogType.USER_PASS_RECOVER, "Contraseña de candidato cambiada " + username, null, conn);
-                        }
-                        if (clientUserId != null)
-                        {
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "SELECT nombre as name, email FROM client_users WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", clientUserId);
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        email = reader.GetString(reader.GetOrdinal("email"));
-                                        name = reader.GetString(reader.GetOrdinal("name"));
-                                    }
-                                }
-                            }
-                            using (SqlCommand command = conn.CreateCommand())
-                            {
-                                command.CommandText = "UPDATE client_users SET pwd = @PWD WHERE id = @ID";
-                                command.Parameters.AddWithValue("@ID", clientUserId);
-                                command.Parameters.AddWithValue("@PWD", EncryptString(pass));
-                                command.ExecuteNonQuery();
-                            }
-                            LogToDB(LogType.CLIENTUSER_PASS_RECOVER, "Contraseña de candidato cambiada " + email, null, conn);
-                        }
-
-                        //Enivar email
-                        if (email != null && name != null)
-                        {
-                            EventMailer.SendEmail(new EventMailer.Email()
-                            {
-                                template = "passwordChanged",
-                                toEmail = email,
-                                toName = name,
-                                subject = "[Think&Job] Contraseña cambiada",
-                                priority = EventMailer.EmailPriority.MODERATE
-                            });
-
-                            result = new { error = false };
                         }
                     }
+
+                    // 2. Validar código y caducidad
+                    if (candidateId == null && userId == null && clientUserId == null)
+                        return Ok(new { error = "Error 4413, código de recuperación no reconocido." });
+
+                    if (expiration < DateTime.Now)
+                        return Ok(new { error = "Error 4414, el código de recuperación ya caducó." });
+
+
+                    // 3. Cambiar contraseña según el tipo de usuario
+                    string? email = null, name = null;
+
+                    if (candidateId != null)
+                    {
+                        string? dni = null;
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "SELECT CONCAT(nombre, ' ', apellidos) AS name, email, dni FROM candidatos WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", candidateId);
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (await reader.ReadAsync())
+                                {
+                                    name = reader["name"] as string;
+                                    email = reader["email"] as string;
+                                    dni = reader["dni"] as string;
+                                }
+                            }
+                        }
+
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "UPDATE candidatos SET pwd = @PWD WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", candidateId);
+                            cmd.Parameters.AddWithValue("@PWD", ComputeStringHash(request.Password));
+                            await cmd.ExecuteNonQueryAsync();
+                        }
+
+                        if (dni != null)
+                            LogToDB(LogType.CANDIDATE_PASS_RECOVER, $"Contraseña de candidato cambiada {dni}", null, conn);
+                    }
+
+                    if (userId != null)
+                    {
+                        string? username = null;
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "SELECT CONCAT(name, ' ', surname) AS name, email, username FROM users WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", userId);
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (await reader.ReadAsync())
+                                {
+                                    name = reader["name"] as string;
+                                    email = reader["email"] as string;
+                                    username = reader["username"] as string;
+                                }
+                            }
+                        }
+
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "UPDATE users SET pwd = @PWD WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", userId);
+                            cmd.Parameters.AddWithValue("@PWD", EncryptString(request.Password));
+                            await cmd.ExecuteNonQueryAsync();
+                        }
+
+                        if (username != null)
+                            LogToDB(LogType.USER_PASS_RECOVER, $"Contraseña de usuario cambiada {username}", null, conn);
+                    }
+
+                    if (clientUserId != null)
+                    {
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "SELECT nombre AS name, email FROM client_users WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", clientUserId);
+                            using (var reader = await cmd.ExecuteReaderAsync())
+                            {
+                                if (await reader.ReadAsync())
+                                {
+                                    name = reader["name"] as string;
+                                    email = reader["email"] as string;
+                                }
+                            }
+                        }
+
+                        using (SqlCommand cmd = conn.CreateCommand())
+                        {
+                            cmd.CommandText = "UPDATE client_users SET pwd = @PWD WHERE id = @ID";
+                            cmd.Parameters.AddWithValue("@ID", clientUserId);
+                            cmd.Parameters.AddWithValue("@PWD", EncryptString(request.Password));
+                            await cmd.ExecuteNonQueryAsync();
+                        }
+
+                        LogToDB(LogType.CLIENTUSER_PASS_RECOVER, $"Contraseña de cliente cambiada {email}", null, conn);
+                    }
+
+
+                    // 4. Eliminar código de recuperación
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "DELETE FROM recovery_codes WHERE code = @CODE";
+                        cmd.Parameters.AddWithValue("@CODE", request.RecoveryCode);
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+
+
+                    // 5. Enviar notificación por correo
+                    if (email != null && name != null)
+                    {
+                        EventMailer.SendEmail(new EventMailer.Email()
+                        {
+                            template = "passwordChanged",
+                            toEmail = email,
+                            toName = name,
+                            subject = "[Think&Job] Contraseña cambiada",
+                            priority = EventMailer.EmailPriority.MODERATE
+                        }, _emailSettings);
+
+                        result = new { error = false };
+                    }
                 }
-                catch (Exception)
-                {
-                    result = new { error = "Error 5411, no se ha podido cambiar la contraseña." };
-                }
+            }
+            catch (Exception)
+            {
+                result = new { error = "Error 5411, no se ha podido cambiar la contraseña." };
             }
 
             return Ok(result);
         }
 
-        // Version
+        #endregion
+
         [HttpGet]
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         [Route(template: "version")]
@@ -662,43 +671,6 @@ namespace ThinkAndJobSolution.Controllers
             return Results.Json(new { version = VERSION });
         }
 
-
-        //------------------------------------------ENDPOINTS FIN---------------------------------------------
-
-        //------------------------------------------CLASES INICIO---------------------------------------------
-        //public struct LoginData
-        //{
-        //    public bool found { get; set; }
-        //    public object error { get; set; }
-        //    public string token { get; set; }
-        //    public string id { get; set; }
-        //    public string username { get; set; }
-        //    public string pwd { get; set; }
-        //    public string docID { get; set; }
-        //    public string docType { get; set; }
-        //    public string name { get; set; }
-        //    public string surname { get; set; }
-        //    public string email { get; set; }
-        //    public bool authorized { get; set; }
-        //    public string securityToken { get; set; }
-        //    public bool isExternal { get; set; }
-        //    public bool hideSocieties { get; set; }
-        //    public bool hasToShift { get; set; }
-        //    public bool requiresKeepAlive { get; set; }
-        //    public string photo { get; set; }
-        //    public string type { get; set; }
-        //    public string candidateId { get; set; }
-        //    public string candidateDni { get; set; }
-        //    public Object lastSignLink { get; set; }
-        //    public DateTime lastAccess { get; set; }
-        //    public string autoLoginToken { get; set; }
-        //    public int? cstatus { get; set; }
-        //    public int? periodoGracia { get; set; }
-        //}
-
-        //------------------------------------------CLASES FIN------------------------------------------------
-
-        //------------------------------------------FUNCIONES INI---------------------------------------------
 
         #region Funciones Login
 
@@ -983,6 +955,7 @@ namespace ThinkAndJobSolution.Controllers
             return InstallationConstants.PUBLIC_URL + "/access?auto=" + code;
             */
         }
+
         public static string getAutoLoginString(string userType, string id, string token, SqlConnection lastConn, SqlTransaction transaction)
         {
             string loginString = null;
@@ -1088,7 +1061,5 @@ namespace ThinkAndJobSolution.Controllers
 
             return result;
         }
-
-        //------------------------------------------FUNCIONES FIN---------------------------------------------
     }
 }

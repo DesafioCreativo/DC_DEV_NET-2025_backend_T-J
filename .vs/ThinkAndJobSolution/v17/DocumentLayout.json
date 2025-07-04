@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\candidate\\candidatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\candidate\\candidatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\_helper\\ohers\\eventmailer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\_helper\\ohers\\eventmailer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\_helper\\installationconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\_helper\\installationconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\accesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\accesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\controllers\\_helper\\ohers\\eventmailer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\controllers\\_helper\\ohers\\eventmailer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|solutionrelative:thinkandjobsolution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7433329-8669-46BD-A0F6-B08D49E6111C}|ThinkAndJobSolution\\ThinkAndJobSolution.csproj|d:\\mauricio\\proyectos\\thinkandjob\\backend\\dc_dev_net-2025_backend_t-j\\thinkandjobsolution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,58 +55,96 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\appsettings.json",
-              "RelativeDocumentMoniker": "ThinkAndJobSolution\\appsettings.json",
-              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\appsettings.json",
-              "RelativeToolTip": "ThinkAndJobSolution\\appsettings.json",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABwAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-02T14:29:20.542Z",
+              "Title": "CandidateController.cs",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Candidate\\CandidateController.cs",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\Candidate\\CandidateController.cs",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Candidate\\CandidateController.cs",
+              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\Candidate\\CandidateController.cs",
+              "ViewState": "AQIAADoEAAAAAAAAAAAqwAAAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T15:33:05.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Web.cs",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Web.cs",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\Web.cs",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\Web.cs",
+              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\Web.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T15:32:50.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T15:32:40.345Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\DashboardController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T15:32:27.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\appsettings.json",
+              "RelativeDocumentMoniker": "ThinkAndJobSolution\\appsettings.json",
+              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\appsettings.json",
+              "RelativeToolTip": "ThinkAndJobSolution\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-02T21:49:39.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "AccessController.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AccessController.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\AccessController.cs",
-              "ViewState": "AQIAAMMBAAAAAAAAAADwv9IBAAA0AAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwBAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T12:49:45.375Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "EventMailer.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\Ohers\\EventMailer.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\_Helper\\Ohers\\EventMailer.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\Ohers\\EventMailer.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\_Helper\\Ohers\\EventMailer.cs",
-              "ViewState": "AQIAAOQAAAAAAAAAAAAQwPwAAAAAAAAA",
+              "ViewState": "AQIAABcBAAAAAAAAAAAawB8BAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-30T15:19:56.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InstallationConstants.cs",
-              "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
-              "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
-              "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
-              "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\_Helper\\InstallationConstants.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAawBAAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T17:33:48.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "AlertaHostedService.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\HostedServices\\AlertaHostedService.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\HostedServices\\AlertaHostedService.cs",
@@ -102,8 +152,7 @@
               "RelativeToolTip": "ThinkAndJobSolution\\HostedServices\\AlertaHostedService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T15:17:21.439Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T15:17:21.439Z"
             },
             {
               "$type": "Document",
@@ -113,23 +162,22 @@
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Controllers\\AuthController.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAcwBgAAAAwAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T15:08:24.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Program.cs",
               "RelativeDocumentMoniker": "ThinkAndJobSolution\\Program.cs",
               "ToolTip": "D:\\Mauricio\\Proyectos\\ThinkAndJob\\BackEnd\\DC_DEV_NET-2025_backend_T-J\\ThinkAndJobSolution\\Program.cs",
               "RelativeToolTip": "ThinkAndJobSolution\\Program.cs",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAAACIAAAAAAAAA",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAQwIIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T15:02:50.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T15:02:50.297Z"
             }
           ]
         }
