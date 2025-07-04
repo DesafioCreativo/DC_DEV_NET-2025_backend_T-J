@@ -33,7 +33,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
 
                 try
                 {
-                    Category? category = getCategory(conn, null, categoryId);
+                    Category? category = getCategory(conn, categoryId);
                     if (category == null)
                     {
                         result = new { error = "Error 5812, categoria no encontrada" };
@@ -236,19 +236,16 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
         }
 
 
+        [AllowAnonymous]
         [HttpGet]
         [Route(template: "list/")]
         public IActionResult List()
         {
-            string securityToken = Cl_Security.getSecurityInformation(User, "securityToken");
             object result = new
             {
                 error = "Error 2932, no se ha podido procesar la petición.",
             };
-            if (!HasPermission("Category.List", securityToken).Acceso)
-            {
-                return Ok(new { error = "Error 1001, No se disponen de los privilegios suficientes." });
-            }
+
             using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
             {
                 conn.Open();
@@ -258,7 +255,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                     result = new
                     {
                         error = false,
-                        categories = listCategories(conn, null)
+                        categories = ListCategories(conn)
                     };
                 }
                 catch (Exception)
@@ -268,6 +265,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
             }
             return Ok(result);
         }
+
 
         [HttpGet]
         [Route(template: "list-for-company/{companyId}/")]
@@ -592,17 +590,13 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
         //------------------------------------------CLASES FIN------------------------------------------------
 
         //------------------------------------------FUNCIONES INI---------------------------------------------
-        public static List<Category> listCategories(SqlConnection conn, SqlTransaction transaction)
+        
+
+        public static List<Category> ListCategories(SqlConnection conn)
         {
             List<Category> categories = new();
             using (SqlCommand command = conn.CreateCommand())
             {
-                if (transaction != null)
-                {
-                    command.Connection = conn;
-                    command.Transaction = transaction;
-                }
-
                 command.CommandText = "SELECT * FROM categories ORDER BY name";
 
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -619,21 +613,14 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                     }
                 }
             }
-
             return categories;
         }
 
-        public static Category? getCategory(SqlConnection conn, SqlTransaction transaction, string categoryId)
+        public static Category? getCategory(SqlConnection conn, string categoryId)
         {
             Category? category = null;
             using (SqlCommand command = conn.CreateCommand())
             {
-                if (transaction != null)
-                {
-                    command.Connection = conn;
-                    command.Transaction = transaction;
-                }
-
                 command.CommandText = "SELECT * FROM categories WHERE id = @ID";
                 command.Parameters.AddWithValue("@ID", categoryId);
 
@@ -651,9 +638,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                     }
                 }
             }
-
             return category;
         }
-        //------------------------------------------FUNCIONES FIN---------------------------------------------
     }
 }

@@ -22,6 +22,282 @@ namespace ThinkAndJobSolution.Controllers.Candidate
     [Authorize]
     public class CandidateController : ControllerBase
     {
+        //Creacion
+
+        [HttpPost]
+        [Route(template: "register")]
+        public async Task<IActionResult> RegisterCandidate()
+        {
+            object result = new
+            {
+                error = "Error 2932, no se pudo procesar la petición."
+            };
+
+            using StreamReader readerBody = new StreamReader(Request.Body, System.Text.Encoding.UTF8);
+            string data = await readerBody.ReadToEndAsync();
+
+            JsonElement json = JsonDocument.Parse(data).RootElement;
+
+            if (json.TryGetProperty("dni", out JsonElement dniJson) && json.TryGetProperty("name", out JsonElement nameJson) &&
+                json.TryGetProperty("surname", out JsonElement surnameJson) && json.TryGetProperty("email", out JsonElement emailJson) &&
+                json.TryGetProperty("phone", out JsonElement phoneJson) && json.TryGetProperty("password", out JsonElement passwordJson) &&
+                json.TryGetProperty("signLink", out JsonElement signLinkJson) &&
+                json.TryGetProperty("localidad", out JsonElement localidadJson) && json.TryGetProperty("provincia", out JsonElement provinciaJson) &&
+                json.TryGetProperty("direccion", out JsonElement direccionJson) && json.TryGetProperty("cp", out JsonElement cpJson))
+            {
+
+                string name = nameJson.GetString().Trim();
+                string surname = surnameJson.GetString().Trim();
+                string dni = dniJson.GetString().Trim().ToUpper();
+                string email = emailJson.GetString().Trim();
+                string phone = phoneJson.GetString().Trim();
+                string signLink = signLinkJson.GetString();
+                string localidad = localidadJson.GetString().Trim();
+                string provincia = provinciaJson.GetString().Trim();
+                string direccion = direccionJson.GetString().Trim();
+                string cp = cpJson.GetString().Trim();
+
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+
+                    bool exists = false;
+
+                    //Comprobar si el dni esta en uso
+                    if (CheckDNINIECIFunique(dni, null, conn) != null)
+                    {
+                        result = new
+                        {
+                            error = $"Error 2251, el dni {dni} ya está en uso"
+                        };
+
+                        exists = true;
+                    }
+
+                    //Comprobar si existe otro candidato con el mismo email
+                    if (CheckEMAILunique(email, null, conn) != null)
+                    {
+                        result = new
+                        {
+                            error = $"Error 2252, el email {email} ya está en uso"
+                        };
+
+                        exists = true;
+                    }
+
+                    //Intento de inserccion
+                    if (!exists)
+                    {
+                        int? preRegisterWarnings = null;
+
+                        //Comprobar si tiene warnings
+                        using (SqlCommand command = conn.CreateCommand())
+                        {
+                            command.CommandText =
+                                "SELECT [date], warnings FROM pre_candidates WHERE dni like @DNI";
+
+                            command.Parameters.AddWithValue("@DNI", dniJson.GetString());
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    preRegisterWarnings = reader.GetInt32(reader.GetOrdinal("warnings"));
+                                }
+                            }
+
+                        }
+
+                        bool failed = false;
+                        using (SqlTransaction transaction = conn.BeginTransaction())
+                        {
+                            //Tratar al precandidato
+                            string centroId = null;
+                            try
+                            {
+                                //Borrar al precandidato, si existe
+                                using (SqlCommand command = conn.CreateCommand())
+                                {
+                                    command.Connection = conn;
+                                    command.Transaction = transaction;
+
+                                    command.CommandText =
+                                        "DELETE FROM pre_candidates WHERE dni = @DNI";
+
+                                    command.Parameters.AddWithValue("@DNI", dni); ;
+
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                failed = true;
+                                result = new
+                                {
+                                    error = "Error 5530, no se ha poidido controlar el prerregistro"
+                                };
+                            }
+
+                            //Si no se ha obtenido el centro por preCandidato, obtenerlo por el centro
+                            if (!failed)// && centroId == null
+                            {
+                                try
+                                {
+                                    //Obtener el centro del trabajo
+                                    using (SqlCommand command = conn.CreateCommand())
+                                    {
+                                        command.Connection = conn;
+                                        command.Transaction = transaction;
+
+                                        command.CommandText =
+                                            "SELECT centroId FROM trabajos WHERE signLink = @SIGNLINK";
+
+                                        command.Parameters.AddWithValue("@SIGNLINK", signLink); ;
+
+                                        using (SqlDataReader reader = command.ExecuteReader())
+                                            if (reader.Read())
+                                                centroId = reader.GetString(reader.GetOrdinal("centroId"));
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    failed = true;
+                                    result = new
+                                    {
+                                        error = "Error 5530, no se ha poidido obtener el centro de trabajo"
+                                    };
+                                }
+                            }
+
+                            if (!failed)
+                            {
+                                //Comprobar los tamaños
+                                string error = null;
+                                if (!failed && name.Length > 200) { failed = true; error = "Error 4082, el nombre no puede superar los 200 caracteres."; }
+                                if (!failed && surname.Length > 200) { failed = true; error = "Error 4082, los apellidos no pueden superar los 200 caracteres."; }
+                                if (!failed && dni.Length > 10) { failed = true; error = "Error 4082, el dni no puede superar los 100 caracteres."; }
+                                if (!failed && email.Length > 100) { failed = true; error = "Error 4082, el email no puede superar los 100 caracteres."; }
+                                if (!failed && phone.Length > 20) { failed = true; error = "Error 4082, el teléfono no puede superar los 20 caracteres."; }
+
+                                //Insertar al candidato
+                                string id = ComputeStringHash(
+                                        dniJson.GetString() +
+                                        nameJson.GetString() +
+                                        surnameJson.GetString() +
+                                        emailJson.GetString() +
+                                        phoneJson.GetString() +
+                                        DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
+                                    );
+                                if (!failed)
+                                {
+                                    try
+                                    {
+                                        //Insertar al nuevo candidato
+                                        using (SqlCommand command = conn.CreateCommand())
+                                        {
+                                            command.Connection = conn;
+                                            command.Transaction = transaction;
+
+                                            command.CommandText =
+                                                "INSERT INTO candidatos (id, nombre, apellidos, dni, email, telefono, pwd, warnings, lastSignLink, terminosAceptados, localidad, provincia, direccion, cp, centroId) " +
+                                                "VALUES (@ID, @NAME, @SURNAME, @DNI, @EMAIL, @PHONE, @PWD, @WARNINGS, @LAST_SIGN_LINK, 1, @LOCALIDAD, @PROVINCIA, @DIRECCION, @CP, @CENTRO)";
+
+                                            command.Parameters.AddWithValue("@ID", id);
+                                            command.Parameters.AddWithValue("@NAME", name);
+                                            command.Parameters.AddWithValue("@SURNAME", surname);
+                                            command.Parameters.AddWithValue("@DNI", dni);
+                                            command.Parameters.AddWithValue("@EMAIL", email);
+                                            command.Parameters.AddWithValue("@PHONE", phone);
+                                            command.Parameters.AddWithValue("@PWD", ComputeStringHash(passwordJson.GetString()));
+                                            command.Parameters.AddWithValue("@WARNINGS", (object)preRegisterWarnings ?? DBNull.Value);
+                                            command.Parameters.AddWithValue("@LAST_SIGN_LINK", signLink);
+                                            command.Parameters.AddWithValue("@LOCALIDAD", localidad);
+                                            command.Parameters.AddWithValue("@PROVINCIA", provincia);
+                                            command.Parameters.AddWithValue("@DIRECCION", direccion);
+                                            command.Parameters.AddWithValue("@CP", cp);
+                                            command.Parameters.AddWithValue("@CENTRO", (object)centroId ?? DBNull.Value);
+
+                                            command.ExecuteNonQuery();
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        failed = true;
+                                        error = "Error 5082, problema registrando al usuario.";
+                                    }
+                                }
+
+                                //Prepara el correo
+                                if (!failed)
+                                {
+                                    try
+                                    {
+                                        string code = ComputeStringHash(email + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()).Substring(0, 8).ToUpper();
+
+                                        Dictionary<string, string> inserts = new Dictionary<string, string>();
+                                        inserts["url"] = InstallationConstants.PUBLIC_URL + "/email-activation/" + code;
+
+                                        using (SqlCommand command = conn.CreateCommand())
+                                        {
+                                            command.Connection = conn;
+                                            command.Transaction = transaction;
+
+                                            command.CommandText = "INSERT INTO email_changes_pending (code, email, candidateId) VALUES (@CODE, @EMAIL, @CANDIDATE_ID)";
+                                            command.Parameters.AddWithValue("@CODE", code);
+                                            command.Parameters.AddWithValue("@EMAIL", email);
+                                            command.Parameters.AddWithValue("@CANDIDATE_ID", id);
+                                            int rows = command.ExecuteNonQuery();
+                                        }
+
+                                        error = EventMailer.SendEmail(new EventMailer.Email()
+                                        {
+                                            template = "register",
+                                            inserts = inserts,
+                                            toEmail = email,
+                                            toName = name + " " + surname,
+                                            subject = "Bienvenid@ a THINKANDJOB",
+                                            priority = EventMailer.EmailPriority.IMMEDIATE
+                                        });
+                                    }
+                                    catch (Exception)
+                                    {
+                                        failed = true;
+                                        error = "Error 5081, problema preparando el correo.";
+                                    }
+                                }
+
+                                if (error != null) failed = true;
+
+                                if (failed)
+                                {
+                                    transaction.Rollback();
+                                    result = new
+                                    {
+                                        error
+                                    };
+                                }
+                                else
+                                {
+                                    transaction.Commit();
+
+                                    result = new
+                                    {
+                                        error = false
+                                    };
+
+                                    LogToDB(LogType.CANDIDATE_REGISTERED, "Candidato registrado " + dni, null, conn);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Ok(result);
+        }
+
+
+
         //------------------------------------------ENDPOINTS INICIO------------------------------------------
 
         //Listado
@@ -1212,279 +1488,6 @@ namespace ThinkAndJobSolution.Controllers.Candidate
             return Ok(result);
         }
 
-        //Creacion
-
-        [HttpPost]
-        [Route(template: "register")]
-        public async Task<IActionResult> RegisterCandidate()
-        {
-            object result = new
-            {
-                error = "Error 2932, no se pudo procesar la petición."
-            };
-
-            using StreamReader readerBody = new StreamReader(Request.Body, System.Text.Encoding.UTF8);
-            string data = await readerBody.ReadToEndAsync();
-
-            JsonElement json = JsonDocument.Parse(data).RootElement;
-
-            if (json.TryGetProperty("dni", out JsonElement dniJson) && json.TryGetProperty("name", out JsonElement nameJson) &&
-                json.TryGetProperty("surname", out JsonElement surnameJson) && json.TryGetProperty("email", out JsonElement emailJson) &&
-                json.TryGetProperty("phone", out JsonElement phoneJson) && json.TryGetProperty("password", out JsonElement passwordJson) &&
-                json.TryGetProperty("signLink", out JsonElement signLinkJson) &&
-                json.TryGetProperty("localidad", out JsonElement localidadJson) && json.TryGetProperty("provincia", out JsonElement provinciaJson) &&
-                json.TryGetProperty("direccion", out JsonElement direccionJson) && json.TryGetProperty("cp", out JsonElement cpJson))
-            {
-
-                string name = nameJson.GetString().Trim();
-                string surname = surnameJson.GetString().Trim();
-                string dni = dniJson.GetString().Trim().ToUpper();
-                string email = emailJson.GetString().Trim();
-                string phone = phoneJson.GetString().Trim();
-                string signLink = signLinkJson.GetString();
-                string localidad = localidadJson.GetString().Trim();
-                string provincia = provinciaJson.GetString().Trim();
-                string direccion = direccionJson.GetString().Trim();
-                string cp = cpJson.GetString().Trim();
-
-                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
-                {
-                    conn.Open();
-
-                    bool exists = false;
-
-                    //Comprobar si el dni esta en uso
-                    if (CheckDNINIECIFunique(dni, null, conn) != null)
-                    {
-                        result = new
-                        {
-                            error = $"Error 2251, el dni {dni} ya está en uso"
-                        };
-
-                        exists = true;
-                    }
-
-                    //Comprobar si existe otro candidato con el mismo email
-                    if (CheckEMAILunique(email, null, conn) != null)
-                    {
-                        result = new
-                        {
-                            error = $"Error 2252, el email {email} ya está en uso"
-                        };
-
-                        exists = true;
-                    }
-
-                    //Intento de inserccion
-                    if (!exists)
-                    {
-                        int? preRegisterWarnings = null;
-
-                        //Comprobar si tiene warnings
-                        using (SqlCommand command = conn.CreateCommand())
-                        {
-                            command.CommandText =
-                                "SELECT [date], warnings FROM pre_candidates WHERE dni like @DNI";
-
-                            command.Parameters.AddWithValue("@DNI", dniJson.GetString());
-
-                            using (SqlDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    preRegisterWarnings = reader.GetInt32(reader.GetOrdinal("warnings"));
-                                }
-                            }
-
-                        }
-
-                        bool failed = false;
-                        using (SqlTransaction transaction = conn.BeginTransaction())
-                        {
-                            //Tratar al precandidato
-                            string centroId = null;
-                            try
-                            {
-                                //Borrar al precandidato, si existe
-                                using (SqlCommand command = conn.CreateCommand())
-                                {
-                                    command.Connection = conn;
-                                    command.Transaction = transaction;
-
-                                    command.CommandText =
-                                        "DELETE FROM pre_candidates WHERE dni = @DNI";
-
-                                    command.Parameters.AddWithValue("@DNI", dni); ;
-
-                                    command.ExecuteNonQuery();
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                failed = true;
-                                result = new
-                                {
-                                    error = "Error 5530, no se ha poidido controlar el prerregistro"
-                                };
-                            }
-
-                            //Si no se ha obtenido el centro por preCandidato, obtenerlo por el centro
-                            if (!failed)// && centroId == null
-                            {
-                                try
-                                {
-                                    //Obtener el centro del trabajo
-                                    using (SqlCommand command = conn.CreateCommand())
-                                    {
-                                        command.Connection = conn;
-                                        command.Transaction = transaction;
-
-                                        command.CommandText =
-                                            "SELECT centroId FROM trabajos WHERE signLink = @SIGNLINK";
-
-                                        command.Parameters.AddWithValue("@SIGNLINK", signLink); ;
-
-                                        using (SqlDataReader reader = command.ExecuteReader())
-                                            if (reader.Read())
-                                                centroId = reader.GetString(reader.GetOrdinal("centroId"));
-                                    }
-                                }
-                                catch (Exception)
-                                {
-                                    failed = true;
-                                    result = new
-                                    {
-                                        error = "Error 5530, no se ha poidido obtener el centro de trabajo"
-                                    };
-                                }
-                            }
-
-                            if (!failed)
-                            {
-                                //Comprobar los tamaños
-                                string error = null;
-                                if (!failed && name.Length > 200) { failed = true; error = "Error 4082, el nombre no puede superar los 200 caracteres."; }
-                                if (!failed && surname.Length > 200) { failed = true; error = "Error 4082, los apellidos no pueden superar los 200 caracteres."; }
-                                if (!failed && dni.Length > 10) { failed = true; error = "Error 4082, el dni no puede superar los 100 caracteres."; }
-                                if (!failed && email.Length > 100) { failed = true; error = "Error 4082, el email no puede superar los 100 caracteres."; }
-                                if (!failed && phone.Length > 20) { failed = true; error = "Error 4082, el teléfono no puede superar los 20 caracteres."; }
-
-                                //Insertar al candidato
-                                string id = ComputeStringHash(
-                                        dniJson.GetString() +
-                                        nameJson.GetString() +
-                                        surnameJson.GetString() +
-                                        emailJson.GetString() +
-                                        phoneJson.GetString() +
-                                        DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
-                                    );
-                                if (!failed)
-                                {
-                                    try
-                                    {
-                                        //Insertar al nuevo candidato
-                                        using (SqlCommand command = conn.CreateCommand())
-                                        {
-                                            command.Connection = conn;
-                                            command.Transaction = transaction;
-
-                                            command.CommandText =
-                                                "INSERT INTO candidatos (id, nombre, apellidos, dni, email, telefono, pwd, warnings, lastSignLink, terminosAceptados, localidad, provincia, direccion, cp, centroId) " +
-                                                "VALUES (@ID, @NAME, @SURNAME, @DNI, @EMAIL, @PHONE, @PWD, @WARNINGS, @LAST_SIGN_LINK, 1, @LOCALIDAD, @PROVINCIA, @DIRECCION, @CP, @CENTRO)";
-
-                                            command.Parameters.AddWithValue("@ID", id);
-                                            command.Parameters.AddWithValue("@NAME", name);
-                                            command.Parameters.AddWithValue("@SURNAME", surname);
-                                            command.Parameters.AddWithValue("@DNI", dni);
-                                            command.Parameters.AddWithValue("@EMAIL", email);
-                                            command.Parameters.AddWithValue("@PHONE", phone);
-                                            command.Parameters.AddWithValue("@PWD", ComputeStringHash(passwordJson.GetString()));
-                                            command.Parameters.AddWithValue("@WARNINGS", (object)preRegisterWarnings ?? DBNull.Value);
-                                            command.Parameters.AddWithValue("@LAST_SIGN_LINK", signLink);
-                                            command.Parameters.AddWithValue("@LOCALIDAD", localidad);
-                                            command.Parameters.AddWithValue("@PROVINCIA", provincia);
-                                            command.Parameters.AddWithValue("@DIRECCION", direccion);
-                                            command.Parameters.AddWithValue("@CP", cp);
-                                            command.Parameters.AddWithValue("@CENTRO", (object)centroId ?? DBNull.Value);
-
-                                            command.ExecuteNonQuery();
-                                        }
-                                    }
-                                    catch (Exception)
-                                    {
-                                        failed = true;
-                                        error = "Error 5082, problema registrando al usuario.";
-                                    }
-                                }
-
-                                //Prepara el correo
-                                if (!failed)
-                                {
-                                    try
-                                    {
-                                        string code = ComputeStringHash(email + DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()).Substring(0, 8).ToUpper();
-
-                                        Dictionary<string, string> inserts = new Dictionary<string, string>();
-                                        inserts["url"] = InstallationConstants.PUBLIC_URL + "/email-activation/" + code;
-
-                                        using (SqlCommand command = conn.CreateCommand())
-                                        {
-                                            command.Connection = conn;
-                                            command.Transaction = transaction;
-
-                                            command.CommandText = "INSERT INTO email_changes_pending (code, email, candidateId) VALUES (@CODE, @EMAIL, @CANDIDATE_ID)";
-                                            command.Parameters.AddWithValue("@CODE", code);
-                                            command.Parameters.AddWithValue("@EMAIL", email);
-                                            command.Parameters.AddWithValue("@CANDIDATE_ID", id);
-                                            int rows = command.ExecuteNonQuery();
-                                        }
-
-                                        error = EventMailer.SendEmail(new EventMailer.Email()
-                                        {
-                                            template = "register",
-                                            inserts = inserts,
-                                            toEmail = email,
-                                            toName = name + " " + surname,
-                                            subject = "Bienvenid@ a THINKANDJOB",
-                                            priority = EventMailer.EmailPriority.IMMEDIATE
-                                        });
-                                    }
-                                    catch (Exception)
-                                    {
-                                        failed = true;
-                                        error = "Error 5081, problema preparando el correo.";
-                                    }
-                                }
-
-                                if (error != null) failed = true;
-
-                                if (failed)
-                                {
-                                    transaction.Rollback();
-                                    result = new
-                                    {
-                                        error
-                                    };
-                                }
-                                else
-                                {
-                                    transaction.Commit();
-
-                                    result = new
-                                    {
-                                        error = false
-                                    };
-
-                                    LogToDB(LogType.CANDIDATE_REGISTERED, "Candidato registrado " + dni, null, conn);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return Ok(result);
-        }
 
         //Eliminacion
 
