@@ -15,7 +15,7 @@ namespace ThinkAndJobSolution.Controllers
 {
     [Route("api/v1/users")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class AccessController : ControllerBase
     {
         private readonly EmailSettings _emailSettings;

@@ -22,8 +22,6 @@ namespace ThinkAndJobSolution.Controllers.Candidate
     [Authorize]
     public class CandidateController : ControllerBase
     {
-        //Creacion
-
         [HttpPost]
         [Route(template: "register")]
         public async Task<IActionResult> RegisterCandidate()

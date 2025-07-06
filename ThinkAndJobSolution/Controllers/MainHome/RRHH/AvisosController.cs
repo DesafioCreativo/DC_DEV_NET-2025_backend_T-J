@@ -1310,8 +1310,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
                         //No procesarlo si es schengen
                         string nacionalidad = reader.IsDBNull(reader.GetOrdinal("nacionalidad")) ? null : reader.GetString(reader.GetOrdinal("nacionalidad"));
 
-                        Constants.Pais? pais = Constants.getPaisByIso3(nacionalidad);
-                        if (pais == null || pais.Value.schengen) continue;
+                        var pais = Constants.getPaisByIso3(nacionalidad);
+                        if (pais == null || pais.schengen) continue;
 
                         Aviso aviso = new Aviso()
                         {
@@ -1332,7 +1332,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
                             aviso.info = "El permiso de trabajo de este trabajador ha caducado.";
                         else
                             aviso.info = "El permiso de trabajo de este trabajador caduca en menos de 30 días.";
-                        aviso.info += $" Al estar nacionalizado en el pais '{pais.Value.nombre}', requiere un permiso de trabajo.";
+                        aviso.info += $" Al estar nacionalizado en el pais '{pais.nombre}', requiere un permiso de trabajo.";
 
                         aviso.id = ComputeStringHash(aviso.extra.candidateDni + aviso.extra.candidatePermisoTrabajoCaducidad.Value.ToString("yyyy-MM-dd") + (caducado ? "caducado" : "caducara") + aviso.type);
 

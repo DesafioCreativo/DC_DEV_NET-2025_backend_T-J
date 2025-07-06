@@ -505,14 +505,14 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Prl
                             if (candidate.nacionalidad.Contains(","))
                                 candidate.nacionalidad = String.Join(" ", candidate.nacionalidad.Replace(" ", "").Split(",").Reverse());
 
-                            Pais? pais = getPaisByName(candidate.nacionalidad);
+                            var pais = getPaisByName(candidate.nacionalidad);
                             if (pais == null)
                             {
                                 errorList.Add($"Error en la fila {r}: Nacionalidad '{candidate.nacionalidad}' no encontrada.");
                                 candidate.nacionalidad = null;
                             }
                             else
-                                candidate.nacionalidad = pais.Value.iso3;
+                                candidate.nacionalidad = pais.iso3;
                         }
                         if (string.IsNullOrWhiteSpace(candidate.phone)) candidate.phone = null;
                         if (candidate.phone != null) candidate.phone = candidate.phone.Replace(" ", "");

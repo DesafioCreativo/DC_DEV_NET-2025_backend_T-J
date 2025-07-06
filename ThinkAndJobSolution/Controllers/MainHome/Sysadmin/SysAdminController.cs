@@ -490,8 +490,9 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Sysadmin
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        [Route(template: "get-terms/{type}")]
+        [Route("get-terms/{type}")]
         public IActionResult GetTermsAndConditions(string type)
         {
             return Ok(HelperMethods.GetTermsAndConditions(type));

@@ -1,17 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
+using ThinkAndJobSolution.Controllers._Model;
 
 namespace ThinkAndJobSolution.Controllers._Helper
 {
     public class Constants
     {
-        public struct Pais
-        {
-            public string nombre { get; set; }
-            public string iso2 { get; set; }
-            public string iso3 { get; set; }
-            public int codigo { get; set; }
-            public bool schengen { get; set; }
-        };
         public struct Provincia
         {
             public string nombre;

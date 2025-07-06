@@ -8,6 +8,7 @@ using ThinkAndJobSolution.Utils;
 using static ThinkAndJobSolution.Controllers._Helper.HelperMethods;
 using ThinkAndJobSolution.Controllers.MainHome.Prl;
 using static ThinkAndJobSolution.Controllers.MainHome.Comercial.CompanyContratoController;
+using ThinkAndJobSolution.Controllers._Model;
 
 namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
 {
@@ -16,8 +17,6 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
     [Authorize]
     public class CategoryController : ControllerBase
     {
-        //------------------------------------------ENDPOINTS INICIO------------------------------------------
-
         [HttpGet]
         [Route(template: "{categoryId}")]
         public IActionResult Get(string categoryId)
@@ -33,7 +32,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
 
                 try
                 {
-                    Category? category = getCategory(conn, categoryId);
+                    Categoria? category = getCategory(conn, categoryId);
                     if (category == null)
                     {
                         result = new { error = "Error 5812, categoria no encontrada" };
@@ -236,35 +235,6 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
         }
 
 
-        [AllowAnonymous]
-        [HttpGet]
-        [Route(template: "list/")]
-        public IActionResult List()
-        {
-            object result = new
-            {
-                error = "Error 2932, no se ha podido procesar la petición.",
-            };
-
-            using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
-            {
-                conn.Open();
-
-                try
-                {
-                    result = new
-                    {
-                        error = false,
-                        categories = ListCategories(conn)
-                    };
-                }
-                catch (Exception)
-                {
-                    result = new { error = "Error 5811, no han podido listar las categorias" };
-                }
-            }
-            return Ok(result);
-        }
 
 
         [HttpGet]
@@ -297,7 +267,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                                 puestos = parsePuestos(reader.GetString(reader.GetOrdinal("puestos")));
                     }
                     //Buscar las categorias en la BD
-                    List<Category> categories = new();
+                    List<Categoria> categories = new();
                     foreach (Puesto puesto in puestos)
                     {
                         using (SqlCommand command = conn.CreateCommand())
@@ -309,7 +279,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                             {
                                 while (reader.Read())
                                 {
-                                    categories.Add(new Category()
+                                    categories.Add(new Categoria()
                                     {
                                         id = reader.GetString(reader.GetOrdinal("id")),
                                         name = reader.GetString(reader.GetOrdinal("name")),
@@ -572,53 +542,12 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
             return Ok(result);
         }
 
-        //------------------------------WorkController Fin---------------------------------
-
-
-        //------------------------------------------ENDPOINTS FIN---------------------------------------------
-
-        //------------------------------------------CLASES INICIO---------------------------------------------
-        #region "CLASES"
-        public struct Category
-        {
-            public string id { get; set; }
-            public string name { get; set; }
-            public string details { get; set; }
-            public bool isNew { get; set; }
-        }
-        #endregion
-        //------------------------------------------CLASES FIN------------------------------------------------
-
-        //------------------------------------------FUNCIONES INI---------------------------------------------
         
 
-        public static List<Category> ListCategories(SqlConnection conn)
-        {
-            List<Category> categories = new();
-            using (SqlCommand command = conn.CreateCommand())
-            {
-                command.CommandText = "SELECT * FROM categories ORDER BY name";
 
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        categories.Add(new Category()
-                        {
-                            id = reader.GetString(reader.GetOrdinal("id")),
-                            name = reader.GetString(reader.GetOrdinal("name")),
-                            details = reader.GetString(reader.GetOrdinal("details")),
-                            isNew = reader.GetInt32(reader.GetOrdinal("isNew")) == 1
-                        });
-                    }
-                }
-            }
-            return categories;
-        }
-
-        public static Category? getCategory(SqlConnection conn, string categoryId)
+        public static Categoria? getCategory(SqlConnection conn, string categoryId)
         {
-            Category? category = null;
+            Categoria? category = null;
             using (SqlCommand command = conn.CreateCommand())
             {
                 command.CommandText = "SELECT * FROM categories WHERE id = @ID";
@@ -628,7 +557,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Comercial
                 {
                     if (reader.Read())
                     {
-                        category = new Category()
+                        category = new Categoria()
                         {
                             id = reader.GetString(reader.GetOrdinal("id")),
                             name = reader.GetString(reader.GetOrdinal("name")),
