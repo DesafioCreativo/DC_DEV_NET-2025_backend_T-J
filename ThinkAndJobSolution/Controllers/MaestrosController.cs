@@ -69,127 +69,6 @@ namespace ThinkAndJobSolution.Controllers
 
         #endregion
 
-        #region Paises
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("country/list/")]
-        public IActionResult LeerPaises()
-        {
-            object result = new
-            {
-                error = "Error 2932, no se ha podido procesar la petición.",
-            };
-
-            using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
-            {
-                conn.Open();
-
-                try
-                {
-                    result = new
-                    {
-                        error = false,
-                        paises = ListadoDePaises(conn)
-                    };
-                }
-                catch (Exception)
-                {
-                    result = new { error = "Error 5811, no han podido listar los paises" };
-                }
-            }
-            return Ok(result);
-        }
-
-        public static List<Pais> ListadoDePaises(SqlConnection conn)
-        {
-            List<Pais> paises = new();
-            using (SqlCommand command = conn.CreateCommand())
-            {
-                command.CommandText = "SELECT * FROM const_paises ORDER BY nombre";
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        paises.Add(new Pais()
-                        {
-                            iso3 = reader.IsDBNull(reader.GetOrdinal("iso3")) ? "" : reader.GetString(reader.GetOrdinal("iso3")),
-                            iso2 = reader.IsDBNull(reader.GetOrdinal("iso2")) ? "" : reader.GetString(reader.GetOrdinal("iso2")),
-                            codigo = reader.IsDBNull(reader.GetOrdinal("codigo")) ? 0 : reader.GetInt32(reader.GetOrdinal("codigo")),
-                            nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? "" : reader.GetString(reader.GetOrdinal("nombre")),
-                            schengen = !reader.IsDBNull(reader.GetOrdinal("schengen")) && reader.GetBoolean(reader.GetOrdinal("schengen"))
-                        });
-                    }
-                }
-            }
-            return paises;
-        }
-
-        #endregion
-
-        #region Provincias
-
-        [AllowAnonymous]
-        [HttpGet]
-        [Route("province/list/")]
-        public IActionResult LeerProvincias()
-        {
-            object result = new
-            {
-                error = "Error 2932, no se ha podido procesar la petición.",
-            };
-
-            using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
-            {
-                conn.Open();
-
-                try
-                {
-                    result = new
-                    {
-                        error = false,
-                        provincias = ListadoDeProvincias(conn)
-                    };
-                }
-                catch (Exception)
-                {
-                    result = new { error = "Error 5811, no han podido listar las provincias" };
-                }
-            }
-            return Ok(result);
-        }
-
-        public static List<Provincia> ListadoDeProvincias(SqlConnection conn)
-        {
-            List<Provincia> provincias = new();
-            using (SqlCommand command = conn.CreateCommand())
-            {
-                command.CommandText = "SELECT * FROM const_provincias ORDER BY nombre";
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        provincias.Add(new Provincia()
-                        {
-                            _ref = reader.IsDBNull(reader.GetOrdinal("ref")) ? 0 : reader.GetInt32(reader.GetOrdinal("ref")),
-                            nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? "" : reader.GetString(reader.GetOrdinal("nombre")),
-                            id_integration = reader.IsDBNull(reader.GetOrdinal("id_integration")) ? "" : reader.GetString(reader.GetOrdinal("id_integration")),
-                            id_api = reader.IsDBNull(reader.GetOrdinal("id_api")) ? 0 : reader.GetInt32(reader.GetOrdinal("id_api")),
-                            code = reader.IsDBNull(reader.GetOrdinal("code")) ? "" : reader.GetString(reader.GetOrdinal("code")),
-                            timezone = reader.IsDBNull(reader.GetOrdinal("timezone")) ? "" : reader.GetString(reader.GetOrdinal("timezone")),
-                            name_dt = reader.IsDBNull(reader.GetOrdinal("name_dt")) ? "" : reader.GetString(reader.GetOrdinal("name_dt")),
-                            parent = reader.IsDBNull(reader.GetOrdinal("parent")) ? 0 : reader.GetInt32(reader.GetOrdinal("parent"))
-                        });
-                    }
-                }
-            }
-            return provincias;
-        }
-
-        #endregion
-
         #region Localidades
 
         [AllowAnonymous]
@@ -238,8 +117,8 @@ namespace ThinkAndJobSolution.Controllers
                             _ref = reader.IsDBNull(reader.GetOrdinal("ref")) ? 0 : reader.GetInt32(reader.GetOrdinal("ref")),
                             provinciaRef = reader.IsDBNull(reader.GetOrdinal("provinciaRef")) ? 0 : reader.GetInt32(reader.GetOrdinal("provinciaRef")),
                             nombre = reader.IsDBNull(reader.GetOrdinal("nombre")) ? "" : reader.GetString(reader.GetOrdinal("nombre")),
-                            id_integration = reader.IsDBNull(reader.GetOrdinal("id_integration")) ? "" : reader.GetString(reader.GetOrdinal("id_integration")),
-                            id_api = reader.IsDBNull(reader.GetOrdinal("id_api")) ? 0 : reader.GetInt32(reader.GetOrdinal("id_api")),
+                            integration_id = reader.IsDBNull(reader.GetOrdinal("integration_id")) ? "" : reader.GetString(reader.GetOrdinal("integration_id")),
+                            api_id = reader.IsDBNull(reader.GetOrdinal("api_id")) ? 0 : reader.GetInt32(reader.GetOrdinal("api_id")),
                             code = reader.IsDBNull(reader.GetOrdinal("code")) ? "" : reader.GetString(reader.GetOrdinal("code")),
                             timezone = reader.IsDBNull(reader.GetOrdinal("timezone")) ? "" : reader.GetString(reader.GetOrdinal("timezone")),
                             name_dt = reader.IsDBNull(reader.GetOrdinal("name_dt")) ? "" : reader.GetString(reader.GetOrdinal("name_dt")),

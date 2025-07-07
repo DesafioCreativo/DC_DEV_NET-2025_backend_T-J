@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThinkAndJobSolution")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1932f0d642a3feed9f44c30b0e91e705a23fa24")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d417067e708153b324d3e96e322d2d74d5fe4804")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThinkAndJobSolution")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThinkAndJobSolution")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

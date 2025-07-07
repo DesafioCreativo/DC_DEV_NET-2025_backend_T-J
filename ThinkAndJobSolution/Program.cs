@@ -5,7 +5,9 @@ using Newtonsoft.Json.Serialization;
 using System.Text;
 using ThinkAndJobSolution.AccesoDato;
 using ThinkAndJobSolution.Controllers.Authorization;
+using ThinkAndJobSolution.Interfaces;
 using ThinkAndJobSolution.Security;
+using ThinkAndJobSolution.Servicios;
 using ThinkAndJobSolution.Utils;
 using ThinkAndJobSolution.Utils.Interfaces;
 using WebApi.HostedServices;
@@ -49,6 +51,9 @@ builder.Services.AddScoped<IDataAccess, DataAccess>();
 builder.Services.AddScoped<ICl_Encryption, Cl_Encryption>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICl_Helpers, Cl_Helpers>();
+builder.Services.AddScoped<IPaisService, PaisService>();
+builder.Services.AddScoped<IRegionService, RegionService>();
+builder.Services.AddScoped<IProvinciaService, ProvinciaService>();
 
 // Registrar SignalR y el Hosted Service
 builder.Services.AddSignalR();
