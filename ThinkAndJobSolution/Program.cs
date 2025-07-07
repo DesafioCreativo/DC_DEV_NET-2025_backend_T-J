@@ -54,6 +54,8 @@ builder.Services.AddScoped<ICl_Helpers, Cl_Helpers>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 builder.Services.AddScoped<IRegionService, RegionService>();
 builder.Services.AddScoped<IProvinciaService, ProvinciaService>();
+builder.Services.AddScoped<ICiudadService, CiudadService>();
+builder.Services.AddScoped<ILocalidadService, LocalidadService>();
 
 // Registrar SignalR y el Hosted Service
 builder.Services.AddSignalR();
