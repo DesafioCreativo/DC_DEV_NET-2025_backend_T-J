@@ -143,7 +143,7 @@ namespace ThinkAndJobSolution.Controllers.Commons
                     }
                     break;
                 case "cl":
-                    //Obtener la Id del cliente por su token
+                    //Obtener la id del cliente por su token
                     string clientUserId = null;
                     using (SqlCommand command = conn.CreateCommand())
                     {
@@ -160,7 +160,7 @@ namespace ThinkAndJobSolution.Controllers.Commons
                     }
                     break;
                 case "rj":
-                    //Obtener la Id del usuario por su token
+                    //Obtener la id del usuario por su token
                     string userId = null;
                     using (SqlCommand command = conn.CreateCommand())
                     {

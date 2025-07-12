@@ -2,9 +2,8 @@
 
 namespace ThinkAndJobSolution.Interfaces
 {
-    public interface IProvinciaService
+    public interface IPaisService
     {
-        Task<List<Provincia>> ListarProvinciasAsync();
-        Task<List<Provincia>> ListarProvinciasPorRegionAsync(int regionId);
+        Task<List<Pais>> ListarPaisesAsync();
     }
 }

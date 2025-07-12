@@ -586,12 +586,12 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Prl
                             }
                         }
 
-                        CandidateController.UpdateResult update = CandidateController.updateCandidateData(conn, transaction, candidate);
-                        if (update.failed)
-                        {
-                            result = update.result;
-                            throw new Exception();
-                        }
+                        //CandidateController.UpdateResult update = CandidateController.updateCandidateData(conn, transaction, candidate);
+                        //if (update.failed)
+                        //{
+                        //    result = update.result;
+                        //    throw new Exception();
+                        //}
 
                         //Intentar actualizar el puesto de trabajo
                         try

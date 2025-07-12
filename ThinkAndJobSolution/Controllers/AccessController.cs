@@ -784,6 +784,9 @@ namespace ThinkAndJobSolution.Controllers
                         DateTime lastAccess = reader.GetDateTime(reader.GetOrdinal("ultimoAcceso"));
                         periodoGracia = reader.IsDBNull(reader.GetOrdinal("periodoGracia")) ? null : reader.GetDateTime(reader.GetOrdinal("periodoGracia"));
 
+                        //Parche Mauricio Grupp 11-07-2025 Tabla trabajos
+                        workExists = true;
+
                         if (banned)
                         {
                             failed = true;

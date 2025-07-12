@@ -44,7 +44,7 @@ namespace ThinkAndJobSolution.Controllers._Helper
         /*
          #elif Test
 
-            public static readonly string CONNECTION_STRING = "Server=b0ve.com;Initial Catalog=RentingJobDB;User Id=sa;Password=arancelesAlContrabandoIlegal*;";
+            public static readonly string CONNECTION_STRING = "Server=b0ve.com;Initial Catalog=RentingJobDB;User id=sa;Password=arancelesAlContrabandoIlegal*;";
 
             public static readonly string PUBLIC_URL = "https://rentingjob.b0ve.com";
 
@@ -61,7 +61,7 @@ namespace ThinkAndJobSolution.Controllers._Helper
 
     #elif Prod
 
-            public static readonly string CONNECTION_STRING = "Server=localhost;Initial Catalog=RentingJobDB;User Id=sa;Password=^G/GB49pn-qmCw~A;";
+            public static readonly string CONNECTION_STRING = "Server=localhost;Initial Catalog=RentingJobDB;User id=sa;Password=^G/GB49pn-qmCw~A;";
 
             public static readonly string PUBLIC_URL = "https://rentingjob.es";
 

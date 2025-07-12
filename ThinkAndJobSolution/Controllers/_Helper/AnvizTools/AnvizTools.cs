@@ -13,7 +13,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Get all employees from a device.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <returns> List of employees. </returns>
         /// <exception cref="Exception"></exception>
         public static async Task<List<DeviceUser>> GetAllEmployees(string deviceId)
@@ -40,7 +40,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Register new employees into a device.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <param name="employees"> Array of employees. Employee type: DeviceUser </param>
         /// <returns>Task</returns>
         /// <exception cref="Exception"></exception>
@@ -67,7 +67,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Delete a list of employees from a device.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <param name="employees"> Array of employees. Employee type: DeviceUser </param>
         /// <returns>Task</returns>
         /// <exception cref="Exception"></exception>
@@ -122,7 +122,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// Controls the workshift of an employee.<br></br>
         /// If null is returned, shift has to be deleted. Otherwise, use candidate corrections.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <param name="groupName"> Group name. </param>
         /// <param name="candidateName"> Employee name. </param>
         /// <param name="state"> Employee state. </param>
@@ -184,7 +184,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Ping a device, verifying if it is connected.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <returns>Task</returns>
         /// <exception cref="Exception"></exception>
         public static async Task<bool> Ping(string deviceId)
@@ -212,7 +212,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Set the current date to a device.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <returns>Task</returns>
         /// <exception cref="Exception"></exception>
         public static async Task<bool> SetCurrentDate(string deviceId)
@@ -237,7 +237,7 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// Remove all employees and faces.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
+        /// <param name="deviceId"> id of the target device. </param>
         /// <returns> Task </returns>
         public static async Task<bool> RemoveAllEmployees(string deviceId)
         {
@@ -266,8 +266,8 @@ namespace ThinkAndJobSolution.Controllers._Helper.AnvizTools
         /// <summary>
         /// NOT USED - Change the face of an employee.
         /// </summary>
-        /// <param name="deviceId"> Id of the target device. </param>
-        /// <param name="idd"> Id of employee. </param>
+        /// <param name="deviceId"> id of the target device. </param>
+        /// <param name="idd"> id of employee. </param>
         /// <param name="image"> Image of an employee. </param>
         /// <returns>Task</returns>
         /// <exception cref="Exception"></exception>

@@ -198,7 +198,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Prl
                         command4.ExecuteNonQuery();
 
                         // 4º lo añadimos al dispositivo en el que está (si está en alguno)
-                        string cId2 = null; // Id del candidato
+                        string cId2 = null; // id del candidato
                         using SqlCommand command5 = conn.CreateCommand();
                         command5.Connection = conn;
                         command5.Transaction = transaction;

@@ -1133,7 +1133,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Sysadmin
 
                         foreach (string id in ids)
                         {
-                            CandidateController.updateCandidateData(conn, transaction, new _Model.Candidate.CandidateStats() { id = id });
+                            //aquimauCandidateController.updateCandidateData(conn, transaction, new _Model.Candidate.CandidateStats() { id = id });
                         }
 
                         transaction.Commit();
@@ -1894,7 +1894,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.Sysadmin
 
                         foreach (string id in ids)
                         {
-                            CandidateController.updateCandidateData(conn, transaction, new _Model.Candidate.CandidateStats() { id = id });
+                            //aquimauCandidateController.updateCandidateData(conn, transaction, new _Model.Candidate.CandidateStats() { id = id });
                         }
 
                         transaction.Commit();

@@ -1715,38 +1715,11 @@ namespace ThinkAndJobSolution.Controllers._Helper
             return result;
         }
 
-        public static string FindCategoryNameByCategoryId(string categoryId, SqlConnection lastConn = null, SqlTransaction transaction = null)
-        {
-            string result = "ERROR";
-            try
-            {
-                SqlConnection conn = lastConn ?? new SqlConnection(CONNECTION_STRING);
-                if (lastConn == null) conn.Open();
-
-                using (SqlCommand command = conn.CreateCommand())
-                {
-                    if (transaction != null)
-                    {
-                        command.Connection = conn;
-                        command.Transaction = transaction;
-                    }
-
-                    command.CommandText = "SELECT name FROM categories WHERE id = @ID";
-
-                    command.Parameters.AddWithValue("@ID", categoryId);
-
-                    result = (string)command.ExecuteScalar();
-                }
-                if (lastConn == null) conn.Close();
-            }
-            catch (Exception) { }
-            return result;
-        }
 
         /// <summary>
         /// Devuelve las ids de los dispositivos RF asociados a un candidato
         /// </summary>
-        /// <param name="candidateId"> Id del candidato </param>
+        /// <param name="candidateId"> id del candidato </param>
         /// <param name="lastConn"> Último objeto de conexión </param>
         /// <param name="transaction"> Transacción </param>
         /// <returns></returns>

@@ -32,21 +32,6 @@ namespace ThinkAndJobSolution.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("listByCity")]
-        public async Task<IActionResult> LeerLocalidadesPorCiudad(int ciudadId)
-        {
-            try
-            {
-                var localidades = await _localidadService.ListarLocalidadesPorCiudadAsync(ciudadId);
-                return Ok(new { error = false, localidades });
-            }
-            catch (Exception)
-            {
-                return Ok(new { error = "Error 5811, no se han podido listar las localidades" });
-            }
-        }
-
-        [AllowAnonymous]
         [HttpGet("listByProvince")]
         public async Task<IActionResult> LeerLocalidadesPorProvincia(int provinciaId)
         {

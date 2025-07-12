@@ -27,7 +27,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Obtiene un documento de un candidato.
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "get/{documentId}")]
@@ -76,8 +76,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Descarga un documento laboral de un candidato.
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "downloadlaboral/{candidateId}/{documentId}")]
@@ -107,8 +107,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Descarga un documento de control horario de un candidato.
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "downloadchorario/{candidateId}/{documentId}")]
@@ -145,8 +145,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Descarga un documento personal de un candidato.
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpPost]
         [Route(template: "downloadpersonal/")]
@@ -637,8 +637,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// 2º Elimina el documento del candidato (directorio "cdocuments" en cada directorio de candidato).
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <paran name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <paran name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpDelete]
         [Route(template: "delete/{candidateId}/{documentId}")]
@@ -688,8 +688,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// 2º Elimina el documento del candidato (directorio "control_horario" en cada directorio de candidato).
         /// </summary>
         /// <param name="securityToken"> Token de seguridad </param>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <paran name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <paran name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpDelete]
         [Route(template: "deleteCHorario/{candidateId}/{documentId}")]
@@ -800,7 +800,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// <summary>
         /// Lista los documentos de un candidato.
         /// </summary>
-        /// <param name="candidateId"> Id del candidato </param>
+        /// <param name="candidateId"> id del candidato </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "list-for-candidates/")]
@@ -836,8 +836,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// <summary>
         /// Descarga un documento de un candidato.
         /// </summary>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "download-for-candidates/{candidateId}/{documentId}")]
@@ -878,8 +878,8 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// <summary>
         /// Descarga un documento de un candidato.
         /// </summary>
-        /// <param name="candidateId"> Id del candidato </param>
-        /// <param name="documentId"> Id del documento </param>
+        /// <param name="candidateId"> id del candidato </param>
+        /// <param name="documentId"> id del documento </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "/download-for-candidates-controlHorario/{candidateId}/{documentId}")]
@@ -921,7 +921,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Lista los documentos de control horario que el candidato ha subido a la plataforma.
         /// Hace una consulta a la tabla de documentos de control horario. ccontrol_horario.
         /// </summary>
-        /// <param name="candidateId"> Id del candidato </param>
+        /// <param name="candidateId"> id del candidato </param>
         /// <returns> Json con el resultado de la operación </returns>
         [HttpGet]
         [Route(template: "list-control-horario/")]
@@ -1318,7 +1318,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Lista los documentos de un candidato.
         /// </summary>
         /// <param name="conn"> Conexión a la base de datos </param>
-        /// <param name="candidateId"> Id del candidato </param>
+        /// <param name="candidateId"> id del candidato </param>
         /// <returns> Lista de documentos para el candidato </returns>
         private static List<CDocument> listForCandidates(SqlConnection conn, string candidateId)
         {
@@ -1351,7 +1351,7 @@ namespace ThinkAndJobSolution.Controllers.MainHome.RRHH
         /// Lista los documentos de control horario que el candidato ha subido a la plataforma.
         /// </summary>
         /// <param name="conn"> Conexión a la base de datos </param>
-        /// <param name="candidateId"> Id del candidato </param>
+        /// <param name="candidateId"> id del candidato </param>
         /// <returns> Lista de documentos de control horario para el candidato </returns>
         private static List<CDocument> listControlHorario(SqlConnection conn, string candidateId)
         {

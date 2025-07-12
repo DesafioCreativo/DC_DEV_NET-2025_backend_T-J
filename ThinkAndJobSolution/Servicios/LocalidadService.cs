@@ -19,18 +19,10 @@ namespace ThinkAndJobSolution.Servicios
             return await ObtenerLocalidadesAsync(query, null);
         }
 
-        public async Task<List<Localidad>> ListarLocalidadesPorCiudadAsync(int ciudadId)
-        {
-            const string query = "SELECT * FROM const_localidades WHERE parent = @ciudadId ORDER BY nombre";
-            var parametros = new Dictionary<string, object> { { "@ciudadId", ciudadId } };
-            return await ObtenerLocalidadesAsync(query, parametros);
-        }
-
         public async Task<List<Localidad>> ListarLocalidadesPorProvinciaAsync(int provinciaId)
         {
             const string query = @"SELECT * FROM const_localidades
-                left join const_cities on const_localidades.parent = const_cities.id
-                WHERE const_cities.parent = @provinciaId ORDER BY nombre";
+                WHERE const_localidades.parent = @provinciaId ORDER BY const_localidades.nombre";
             var parametros = new Dictionary<string, object> { { "@provinciaId", provinciaId } };
             return await ObtenerLocalidadesAsync(query, parametros);
         }
@@ -38,9 +30,8 @@ namespace ThinkAndJobSolution.Servicios
         public async Task<List<Localidad>> ListarLocalidadesPorRegionAsync(int regionId)
         {
             const string query = @"SELECT * FROM const_localidades
-                left join const_cities on const_localidades.parent = const_cities.id
-                left join const_provincias on const_cities.parent = const_provincias.ref
-                WHERE const_provincias.parent = @regionId ORDER BY nombre";
+                left join const_provincias on const_localidades.parent = const_provincias.api_id
+                WHERE const_provincias.parent = @regionId ORDER BY const_localidades.nombre";
             var parametros = new Dictionary<string, object> { { "@regionId", regionId } };
             return await ObtenerLocalidadesAsync(query, parametros);
         }
